@@ -77,8 +77,7 @@ export default function RootLayout({ children }) {
   );
 }`,
 
-  'src/lib/storeData.js': `// الـ 16 قسماً بالترتيب المطابق للصورة تماماً
-export const navCategories = [
+  'src/lib/storeData.js': `export const navCategories = [
   "الإلكترونيات",
   "الجمال والعطور",
   "المنزل",
@@ -97,7 +96,6 @@ export const navCategories = [
   "أحسن المنتجات"
 ];
 
-// شريط الـ 12 كارت المربعة بأبعاد 104x104 وصور المنتجات التجارية الرسمية (صفر Unsplash)
 export const promoSquareCards = [
   { title: "شيك العروض", badge: "تبدأ من 1", hasCurrency: true, is1111: true, cat: "deals", img: "" },
   { title: "المقاضي", badge: "تبدأ من 1", hasCurrency: true, cat: "البقالة", img: "https://m.media-amazon.com/images/I/81I6xQ78H2L._AC_SL1500_.jpg" },
@@ -113,7 +111,6 @@ export const promoSquareCards = [
   { title: "شنط الظهر", badge: "تبدأ من 19", hasCurrency: true, cat: "أزياء الرجال", img: "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SL1500_.jpg" }
 ];
 
-// النواة الأساسية لـ 25 منتج تجاري رسمي بصور استوديو عالية الدقة (صفر Unsplash)
 const coreCommercialSeeds = [
   ["أبل", "آيفون 16 برو ماكس سعة 256 جيجابايت تيتانيوم صحراوي 5G مع فيس تايم", "الإلكترونيات", 5199, 5699, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=800&hei=800&fmt=jpeg&qlt=90"],
   ["أبل", "آيفون 16 برو سعة 128 جيجابايت تيتانيوم طبيعي الجيل الخامس 5G", "الإلكترونيات", 4299, 4699, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-naturaltitanium?wid=800&hei=800&fmt=jpeg&qlt=90"],
@@ -142,7 +139,6 @@ const coreCommercialSeeds = [
   ["كاسيو", "ساعة يد رجالية كلاسيكية ستانلس ستيل مقاومة للماء - فضي", "أزياء الرجال", 145, 220, "https://m.media-amazon.com/images/I/61C+8r8rGJL._AC_SL1500_.jpg"]
 ];
 
-// توليد 100 منتج فريد تماماً بمواصفات وسعات وموديلات مستقلة
 export function generate100UniqueCommercialProducts(batchNum = 1) {
   const storageSpecs = [
     "النسخة الرسمية للسعودية - ضمان سنتين",
@@ -267,12 +263,10 @@ export async function POST(request) {
   return NextResponse.json(newOrder, { status: 201 });
 }`,
 
-  // الواجهة الأمامية المنفذة بالمللي وفقاً للقواعد الهندسية الـ 6 في البرومبت
   'src/app/page.jsx': `"use client";
 import { useState, useEffect, useRef } from "react";
 import { initialProducts, navCategories, promoSquareCards } from "../lib/storeData";
 
-// أيقونات SVG مرسومة بدقة خط 1.5px مطابقة لنظام تصميم نون الرسمي
 const Icons = {
   SarSymbol: ({ className = "w-3.5 h-3.5 inline-block" }) => (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -280,12 +274,11 @@ const Icons = {
     </svg>
   ),
   NoonLogoAr: () => (
-    <div className="flex items-center gap-2 select-none">
+    <div className="flex items-center gap-1.5 select-none">
       <img
         src="https://f.nooncdn.com/s/app/com/noon/design-system/logos/noon-logo-ar.svg"
         alt="نون"
         className="h-7 sm:h-8 w-auto object-contain"
-        onError={(e) => { e.currentTarget.style.display = 'none'; }}
       />
     </div>
   ),
@@ -335,8 +328,6 @@ export default function NoonPixelPerfectReplica() {
 
   const [activeProduct, setActiveProduct] = useState(null);
   const [activeImage, setActiveImage] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
-  const [selectedSize, setSelectedSize] = useState("");
 
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
@@ -358,37 +349,30 @@ export default function NoonPixelPerfectReplica() {
   const stripRef = useRef(null);
 
   useEffect(() => {
-    const savedProds = localStorage.getItem("noon_prods_v8");
+    const savedProds = localStorage.getItem("noon_prods_v10");
     if (savedProds) setProducts(JSON.parse(savedProds));
-    const savedOrders = localStorage.getItem("noon_orders_v8");
+    const savedOrders = localStorage.getItem("noon_orders_v10");
     if (savedOrders) setOrders(JSON.parse(savedOrders));
-    const savedUser = localStorage.getItem("noon_user_v8");
+    const savedUser = localStorage.getItem("noon_user_v10");
     if (savedUser) setUserName(savedUser);
   }, []);
 
   function scrollPromoStrip(dir) {
-    if (stripRef.current) {
-      stripRef.current.scrollBy({ left: dir * 360, behavior: "smooth" });
-    }
+    if (stripRef.current) stripRef.current.scrollBy({ left: dir * 360, behavior: "smooth" });
   }
 
   function openFullProductPage(p) {
     setActiveProduct(p);
     setActiveImage(p.image);
-    setSelectedColor(p.colors?.[0] || "اللون القياسي الرسمي");
-    setSelectedSize(p.sizes?.[0] || "الإصدار الأساسي");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   let filtered = products.filter((p) => {
     const matchCat =
-      category === "all"
-        ? true
-        : category === "deals"
-        ? p.isMegaDeal
-        : category === "wishlist"
-        ? wishlist.includes(p.id)
-        : p.category === category;
+      category === "all" ? true :
+      category === "deals" ? p.isMegaDeal :
+      category === "wishlist" ? wishlist.includes(p.id) :
+      p.category === category;
     const matchSearch =
       p.title.toLowerCase().includes(search.toLowerCase()) ||
       p.category.toLowerCase().includes(search.toLowerCase()) ||
@@ -410,9 +394,7 @@ export default function NoonPixelPerfectReplica() {
   }
 
   function updateQty(id, delta) {
-    setCart((prev) =>
-      prev.map((i) => (i.id === id ? { ...i, qty: i.qty + delta } : i)).filter((i) => i.qty > 0)
-    );
+    setCart((prev) => prev.map((i) => (i.id === id ? { ...i, qty: i.qty + delta } : i)).filter((i) => i.qty > 0));
   }
 
   function toggleWishlist(id) {
@@ -439,19 +421,12 @@ export default function NoonPixelPerfectReplica() {
     const res = await fetch("/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        customerName,
-        customerPhone,
-        city,
-        address,
-        paymentMethod,
-        totalAmount: finalTotal,
-      }),
+      body: JSON.stringify({ customerName, customerPhone, city, address, paymentMethod, totalAmount: finalTotal }),
     });
     const order = await res.json();
     const updatedOrders = [order, ...orders];
     setOrders(updatedOrders);
-    localStorage.setItem("noon_orders_v8", JSON.stringify(updatedOrders));
+    localStorage.setItem("noon_orders_v10", JSON.stringify(updatedOrders));
     alert("تم تأكيد طلبك بنجاح! رقم الشحنة: " + order.orderNumber);
     setCart([]);
     setDiscountRate(0);
@@ -459,9 +434,6 @@ export default function NoonPixelPerfectReplica() {
     setIsCartOpen(false);
   }
 
-  // =========================================================================
-  // 5. بطاقة المنتج القياسية في نون (Standard Noon Product Card - Pixel Perfect)
-  // =========================================================================
   function ProductCard({ p }) {
     const disc = Math.max(0, Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100));
     const isFav = wishlist.includes(p.id);
@@ -471,75 +443,46 @@ export default function NoonPixelPerfectReplica() {
         className="cursor-pointer bg-white border border-[#E2E5F1] rounded-[12px] p-[10px] hover:shadow-md transition-all flex flex-col justify-between relative group"
       >
         <div>
-          {/* حاوية الصورة بارتفاع 240px وخلفية #F7F7FA وحواف 8px و object-contain p-2 */}
           <div className="relative h-[240px] w-full bg-[#F7F7FA] rounded-[8px] overflow-hidden flex items-center justify-center p-2">
-            <img
-              src={p.image}
-              alt={p.title}
-              className="w-full h-full object-contain group-hover:scale-105 transition duration-300"
-            />
-
-            {/* شارة المنتج العلوية اليمنى */}
+            <img src={p.image} alt={p.title} className="w-full h-full object-contain group-hover:scale-105 transition duration-300" />
             <span className="absolute top-2 right-2 bg-noonDark text-white text-[10px] font-bold px-2 py-0.5 rounded-full truncate max-w-[125px]">
               {p.badge}
             </span>
-
-            {/* زر المفضلة الدائري الأبيض في الزاوية العلوية اليسرى */}
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleWishlist(p.id);
-              }}
+              onClick={(e) => { e.stopPropagation(); toggleWishlist(p.id); }}
               className="absolute top-2 left-2 w-7 h-7 rounded-full bg-white shadow-xs border border-gray-100 flex items-center justify-center hover:scale-110 transition"
-              aria-label="المفضلة"
             >
               <Icons.Heart filled={isFav} />
             </button>
-
-            {/* زر الإضافة للسلة المربع الأبيض بحواف دائرية في الزاوية السفلية اليسرى */}
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                addToCart(p);
-              }}
+              onClick={(e) => { e.stopPropagation(); addToCart(p); }}
               className="absolute bottom-2 left-2 w-8 h-8 rounded-lg bg-white hover:bg-noonYellow text-noonDark shadow border border-gray-100 flex items-center justify-center transition"
-              title="أضف إلى العربة"
             >
               <Icons.Cart />
             </button>
           </div>
 
-          {/* تحت الصورة مباشرة: كبسولة التقييم الخضراء الصغيرة 4.8 ★ (1.2k) */}
           <div className="flex items-center gap-1.5 mt-2 mb-1">
             <span className="bg-[#38AE04] text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded flex items-center gap-0.5 leading-none">
-              <span>{p.rating}</span>
-              <span>★</span>
+              <span>{p.rating}</span><span>★</span>
             </span>
             <span className="text-[11px] text-gray-400 font-semibold">({p.reviews})</span>
           </div>
 
-          {/* اسم المنتج في سطرين بالضبط line-clamp-2 text-xs font-bold h-8 */}
           <h3 className="line-clamp-2 text-xs font-bold text-[#111] h-8 leading-4 group-hover:text-noonBlue">
             {p.title}
           </h3>
         </div>
 
-        {/* السعر بخط عريض كبير وبجانبه رمز الريال السعودي الجديد + الخصم + شارة إكسبريس */}
         <div className="mt-2 pt-1">
           <div className="flex items-baseline gap-1">
-            <span className="text-lg font-black text-[#111] tracking-tight">
-              {Number(p.price).toLocaleString()}
-            </span>
+            <span className="text-lg font-black text-[#111] tracking-tight">{Number(p.price).toLocaleString()}</span>
             <Icons.SarSymbol className="w-3.5 h-3.5 text-[#111]" />
           </div>
-
           <div className="flex items-center gap-1.5 text-[11px]">
-            <span className="line-through text-gray-400">
-              {Number(p.oldPrice).toLocaleString()}
-            </span>
+            <span className="line-through text-gray-400">{Number(p.oldPrice).toLocaleString()}</span>
             <span className="text-[#38AE04] font-extrabold">{disc}% خصم</span>
           </div>
-
           <div className="mt-2 pt-1.5 border-t border-gray-100 flex items-center justify-between">
             <span className="express-badge">إكسبريس</span>
             <span className="text-[10px] text-gray-500 font-bold">توصيل مجاني غداً</span>
@@ -551,138 +494,76 @@ export default function NoonPixelPerfectReplica() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* ================================================================= */}
-      {/* 2. الهيدر العلوي القياسي: ارتفاع ثابت 64px، خلفية #FEEE00، عرض 1440px */}
-      {/* ================================================================= */}
+      {/* 2. الهيدر العلوي: ارتفاع ثابت 64px، خلفية #FEEE00 */}
       <header className="bg-[#FEEE00] sticky top-0 z-40 h-[64px] flex items-center">
         <div className="max-w-[1440px] w-full mx-auto px-4 flex items-center justify-between gap-4">
-          
-          {/* أ & ب) شعار نون بالعربية + رمز الهلال الأسود + زر الموقع "أكّد - الرياض" */}
           <div className="flex items-center gap-5 shrink-0">
-            <button
-              onClick={() => {
-                setActiveProduct(null);
-                setCategory("all");
-                setSearch("");
-              }}
-              className="flex items-center"
-            >
+            <button onClick={() => { setActiveProduct(null); setCategory("all"); setSearch(""); }} className="flex items-center">
               <Icons.NoonLogoAr />
             </button>
-
-            <button
-              onClick={() => setIsCityModalOpen(true)}
-              className="flex items-center gap-1.5 text-[13px] text-[#111] hover:opacity-80 transition"
-            >
+            <button onClick={() => setIsCityModalOpen(true)} className="flex items-center gap-1.5 text-[13px] text-[#111] hover:opacity-80 transition">
               <Icons.Pin />
               <span className="font-bold">أكّد - {city}</span>
               <span className="text-[10px]">▾</span>
             </button>
           </div>
 
-          {/* ج) حقل البحث: flex-1 max-w-[720px]، ارتفاع 40px، خلفية #FFFFFF، حواف 6px */}
           <div className="flex-1 max-w-[720px] relative">
             <input
               type="text"
               value={search}
-              onChange={(e) => {
-                setActiveProduct(null);
-                setSearch(e.target.value);
-              }}
+              onChange={(e) => { setActiveProduct(null); setSearch(e.target.value); }}
               placeholder="بحث عن مسحوق غسيل"
               className="w-full h-[40px] pr-10 pl-4 rounded-[6px] bg-[#FFFFFF] text-[13px] text-[#111] placeholder-gray-500 border-none focus:outline-none"
             />
-            <span className="absolute right-3.5 top-1/2 -translate-y-1/2">
-              <Icons.Search />
-            </span>
+            <span className="absolute right-3.5 top-1/2 -translate-y-1/2"><Icons.Search /></span>
           </div>
 
-          {/* د) القائمة اليسرى بخط 13px font-bold text-[#111] وفواصل عمودية */}
           <div className="hidden lg:flex items-center gap-3.5 text-[13px] font-bold text-[#111] shrink-0">
             <button className="hover:opacity-75 flex items-center gap-1">
-              <span>English</span>
-              <span className="text-xs font-semibold">文A</span>
+              <span>English</span><span className="text-xs font-semibold">文A</span>
             </button>
-
             <span className="h-4 w-[1px] bg-black/20" />
-
             <button onClick={() => setIsAuthModalOpen(true)} className="hover:opacity-75 flex items-center gap-1.5">
-              <span>{userName ? userName : "تسجيل الدخول"}</span>
-              <Icons.User />
+              <span>{userName ? userName : "تسجيل الدخول"}</span><Icons.User />
             </button>
-
             <span className="h-4 w-[1px] bg-black/20" />
-
             <button onClick={() => setIsOrdersModalOpen(true)} className="hover:opacity-75 flex items-center gap-1.5">
-              <span>الطلبات</span>
-              <Icons.OrdersBox />
+              <span>الطلبات</span><Icons.OrdersBox />
             </button>
-
             <span className="h-4 w-[1px] bg-black/20" />
-
-            <button
-              onClick={() => {
-                setActiveProduct(null);
-                setCategory("wishlist");
-              }}
-              className="hover:opacity-75 flex items-center gap-1.5 relative"
-            >
-              <span>المفضلة</span>
-              <Icons.Heart filled={wishlist.length > 0} />
-              {wishlist.length > 0 && (
-                <span className="bg-red-600 text-white text-[9px] px-1 rounded-full">{wishlist.length}</span>
-              )}
+            <button onClick={() => { setActiveProduct(null); setCategory("wishlist"); }} className="hover:opacity-75 flex items-center gap-1.5 relative">
+              <span>المفضلة</span><Icons.Heart filled={wishlist.length > 0} />
+              {wishlist.length > 0 && <span className="bg-red-600 text-white text-[9px] px-1 rounded-full">{wishlist.length}</span>}
             </button>
-
             <span className="h-4 w-[1px] bg-black/20" />
-
             <button onClick={() => setIsCartOpen(true)} className="hover:opacity-75 flex items-center gap-1.5 relative">
-              <span>عربة التسوق</span>
-              <Icons.Cart />
-              {totalCartCount > 0 && (
-                <span className="bg-noonBlue text-white text-[10px] px-1.5 rounded-full font-black">
-                  {totalCartCount}
-                </span>
-              )}
+              <span>عربة التسوق</span><Icons.Cart />
+              {totalCartCount > 0 && <span className="bg-noonBlue text-white text-[10px] px-1.5 rounded-full font-black">{totalCartCount}</span>}
             </button>
           </div>
 
-          {/* زر العربة للموبايل */}
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="lg:hidden bg-[#111] text-[#FEEE00] px-3 py-1.5 rounded-[6px] text-xs font-bold flex items-center gap-1.5 shrink-0"
-          >
-            <Icons.Cart />
-            <span>{totalCartCount}</span>
+          <button onClick={() => setIsCartOpen(true)} className="lg:hidden bg-[#111] text-[#FEEE00] px-3 py-1.5 rounded-[6px] text-xs font-bold flex items-center gap-1.5 shrink-0">
+            <Icons.Cart /><span>{totalCartCount}</span>
           </button>
         </div>
       </header>
 
-      {/* ================================================================= */}
-      {/* شريط الفئات السفلي: ارتفاع 44px، خلفية #FFFFFF، حدود سفلية #E2E5F1 */}
-      {/* ================================================================= */}
+      {/* شريط الفئات السفلي: ارتفاع 44px */}
       <nav className="bg-[#FFFFFF] border-b border-[#E2E5F1] sticky top-[64px] z-30 h-[44px] flex items-center">
         <div className="max-w-[1440px] w-full mx-auto px-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-4 sm:gap-[18px] overflow-x-auto no-scrollbar text-[13px] font-bold text-[#111]">
             {navCategories.map((catName) => (
               <button
                 key={catName}
-                onClick={() => {
-                  setActiveProduct(null);
-                  setCategory(catName === "أحسن المنتجات" ? "all" : catName);
-                  setSearch("");
-                }}
-                className={
-                  "shrink-0 transition hover:text-noonBlue " +
-                  (category === catName ? "text-noonBlue font-black border-b-2 border-noonBlue pb-1" : "")
-                }
+                onClick={() => { setActiveProduct(null); setCategory(catName === "أحسن المنتجات" ? "all" : catName); setSearch(""); }}
+                className={"shrink-0 transition hover:text-noonBlue " + (category === catName ? "text-noonBlue font-black border-b-2 border-noonBlue pb-1" : "")}
               >
                 {catName}
               </button>
             ))}
           </div>
 
-          {/* كبسولة احصل على توصيل مجاني مع نون one بإطار #FEEE00 */}
           <button
             onClick={() => setCategory("deals")}
             className="hidden xl:flex items-center gap-1.5 border-2 border-[#FEEE00] bg-[#FFFDF2] hover:bg-[#FEEE00]/20 px-3 py-0.5 rounded-full text-[11px] font-extrabold text-[#111] shrink-0"
@@ -695,20 +576,14 @@ export default function NoonPixelPerfectReplica() {
         </div>
       </nav>
 
-      {/* ================================================================= */}
-      {/* عرض إما: صفحة تفاصيل المنتج الكاملة (PDP) أو الصفحة الرئيسية */}
-      {/* ================================================================= */}
+      {/* صفحة تفاصيل المنتج الكاملة (PDP) أو الصفحة الرئيسية */}
       {activeProduct ? (
         <main className="max-w-[1440px] w-full mx-auto px-4 py-6 flex-1 space-y-6">
           <div className="flex items-center justify-between bg-[#F7F7FA] px-4 py-2.5 rounded-xl border border-[#E2E5F1] text-xs">
             <div className="flex items-center gap-2 text-gray-500">
-              <button onClick={() => setActiveProduct(null)} className="hover:text-noonBlue font-black text-[#111]">
-                ← العودة للصفحة الرئيسية
-              </button>
-              <span>/</span>
-              <span className="font-bold text-noonBlue">{activeProduct.category}</span>
-              <span>/</span>
-              <span className="text-gray-400 truncate max-w-md">{activeProduct.title}</span>
+              <button onClick={() => setActiveProduct(null)} className="hover:text-noonBlue font-black text-[#111]">← العودة للصفحة الرئيسية</button>
+              <span>/</span><span className="font-bold text-noonBlue">{activeProduct.category}</span>
+              <span>/</span><span className="text-gray-400 truncate max-w-md">{activeProduct.title}</span>
             </div>
             <span className="text-[11px] text-gray-400 hidden sm:inline">كود الموديل: {activeProduct.sku}</span>
           </div>
@@ -717,19 +592,13 @@ export default function NoonPixelPerfectReplica() {
             <div className="lg:col-span-4 flex flex-col-reverse sm:flex-row gap-3">
               <div className="flex sm:flex-col gap-2 overflow-x-auto no-scrollbar shrink-0">
                 {(activeProduct.gallery || [activeProduct.image]).map((imgUrl, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImage(imgUrl)}
-                    className={"w-16 h-16 rounded-lg border-2 p-1 bg-[#F7F7FA] " + (activeImage === imgUrl ? "border-noonBlue" : "border-[#E2E5F1]")}
-                  >
+                  <button key={i} onClick={() => setActiveImage(imgUrl)} className={"w-16 h-16 rounded-lg border-2 p-1 bg-[#F7F7FA] " + (activeImage === imgUrl ? "border-noonBlue" : "border-[#E2E5F1]")}>
                     <img src={imgUrl} className="w-full h-full object-contain" alt="thumb" />
                   </button>
                 ))}
               </div>
               <div className="flex-1 bg-[#F7F7FA] rounded-xl p-4 flex items-center justify-center relative min-h-[340px] border border-[#E2E5F1]">
-                <span className="absolute top-3 right-3 bg-noonDark text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
-                  {activeProduct.badge}
-                </span>
+                <span className="absolute top-3 right-3 bg-noonDark text-white text-[10px] font-bold px-2.5 py-1 rounded-full">{activeProduct.badge}</span>
                 <img src={activeImage || activeProduct.image} alt={activeProduct.title} className="max-h-[300px] w-full object-contain" />
               </div>
             </div>
@@ -739,18 +608,14 @@ export default function NoonPixelPerfectReplica() {
                 <span className="text-xs font-extrabold text-noonBlue">{activeProduct.brand}</span>
                 <h1 className="text-base sm:text-xl font-black text-[#111] leading-relaxed mt-1">{activeProduct.title}</h1>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="bg-[#38AE04] text-white text-xs font-bold px-2 py-0.5 rounded">
-                    {activeProduct.rating} ★
-                  </span>
+                  <span className="bg-[#38AE04] text-white text-xs font-bold px-2 py-0.5 rounded">{activeProduct.rating} ★</span>
                   <span className="text-xs text-gray-500 font-bold">({activeProduct.reviews} تقييم موثق)</span>
                 </div>
               </div>
 
               <div className="bg-[#F7F7FA] p-4 rounded-xl space-y-1 border border-[#E2E5F1]">
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-2xl sm:text-3xl font-black text-[#111]">
-                    {Number(activeProduct.price).toLocaleString()}
-                  </span>
+                  <span className="text-2xl sm:text-3xl font-black text-[#111]">{Number(activeProduct.price).toLocaleString()}</span>
                   <Icons.SarSymbol className="w-4 h-4 text-[#111]" />
                   <span className="text-xs text-gray-400 mr-1">(شامل ضريبة القيمة المضافة 15%)</span>
                 </div>
@@ -764,9 +629,7 @@ export default function NoonPixelPerfectReplica() {
 
               <div className="border border-emerald-200 bg-emerald-50/50 p-3 rounded-xl flex items-center justify-between gap-3 text-xs">
                 <div>
-                  <p className="font-bold text-[#111]">
-                    قسّمها على 4 دفعات شهرية بقيمة <strong className="text-noonBlue">{Math.round(activeProduct.price / 4).toLocaleString()} ر.س</strong>
-                  </p>
+                  <p className="font-bold text-[#111]">قسّمها على 4 دفعات شهرية بقيمة <strong className="text-noonBlue">{Math.round(activeProduct.price / 4).toLocaleString()} ر.س</strong></p>
                   <p className="text-[11px] text-gray-500">بدون فوائد أو رسوم عبر تابي أو تمارا</p>
                 </div>
                 <div className="flex gap-1.5 font-black">
@@ -776,21 +639,10 @@ export default function NoonPixelPerfectReplica() {
               </div>
 
               <div className="pt-2 flex gap-3">
-                <button
-                  onClick={() => addToCart(activeProduct)}
-                  className="flex-1 bg-noonBlue hover:bg-blue-700 text-white font-black py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow"
-                >
-                  <Icons.Cart />
-                  <span>إضافة إلى عربة التسوق</span>
+                <button onClick={() => addToCart(activeProduct)} className="flex-1 bg-noonBlue hover:bg-blue-700 text-white font-black py-3.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow">
+                  <Icons.Cart /><span>إضافة إلى عربة التسوق</span>
                 </button>
-                <button
-                  onClick={() => {
-                    addToCart(activeProduct);
-                    setIsCartOpen(false);
-                    setIsCheckoutOpen(true);
-                  }}
-                  className="bg-[#FEEE00] text-[#111] font-black px-6 py-3.5 rounded-xl text-sm"
-                >
+                <button onClick={() => { addToCart(activeProduct); setIsCartOpen(false); setIsCheckoutOpen(true); }} className="bg-[#FEEE00] text-[#111] font-black px-6 py-3.5 rounded-xl text-sm">
                   اشترِ الآن
                 </button>
               </div>
@@ -807,78 +659,46 @@ export default function NoonPixelPerfectReplica() {
                 <p className="text-[#38AE04] font-bold">✓ ضمان الوكيل الرسمي لمدة سنتين</p>
                 <p className="text-[#38AE04] font-bold">✓ إرجاع مجاني خلال 15 يوماً</p>
               </div>
-
-              <div className="bg-white p-4 rounded-xl border border-[#E2E5F1] space-y-1.5">
-                <h4 className="font-black text-xs text-[#111] border-b pb-1">أبرز المميزات</h4>
-                <ul className="list-disc pr-4 space-y-1 text-gray-600">
-                  {(activeProduct.highlights || []).map((h, i) => (
-                    <li key={i}>{h}</li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
         </main>
       ) : (
         <main className="max-w-[1440px] w-full mx-auto px-4 py-4 flex-1 space-y-5">
-          
-          {/* =============================================================== */}
-          {/* 3. شبكة البانرات الـ 4 العلوية (Hero 4-Column Bento Grid - 390px) */}
-          {/* =============================================================== */}
+          {/* 3. شبكة البانرات الـ 4 العلوية بارتفاع موحد 390px */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-            
-            {/* العمود 1 (يمين): بانر لك مجاناً صندوق عافية بتدرج سماوي #BBE5FF إلى #89CFF0 */}
-            <div
-              onClick={() => setCategory("الصحة والتغذية")}
-              className="cursor-pointer h-[390px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#BBE5FF] to-[#89CFF0] p-5 flex flex-col justify-between relative shadow-2xs group"
-            >
+            {/* العمود 1: صندوق عافية */}
+            <div onClick={() => setCategory("الصحة والتغذية")} className="cursor-pointer h-[390px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#BBE5FF] to-[#89CFF0] p-5 flex flex-col justify-between relative shadow-2xs group">
               <div className="text-left space-y-0.5 z-10">
                 <p className="text-xs font-extrabold text-[#111]">لك مجاناً</p>
                 <h2 className="text-[28px] font-black text-[#111] leading-tight">صندوق عافية</h2>
                 <p className="text-[12px] font-bold text-[#111]/90 flex items-center justify-end gap-1">
-                  <span>بإصدار محدود للطلبات بـ 499</span>
-                  <Icons.SarSymbol className="w-3 h-3" />
-                  <span>وأكثر</span>
+                  <span>بإصدار محدود للطلبات بـ 499</span><Icons.SarSymbol className="w-3 h-3" /><span>وأكثر</span>
                 </p>
                 <div className="pt-1 flex justify-end">
                   <span className="bg-[#FFD15C] text-[#111] font-black text-xs px-2.5 py-0.5 rounded inline-flex items-center gap-1 shadow-2xs">
-                    <span>قيمته 1,200</span>
-                    <Icons.SarSymbol className="w-3 h-3" />
+                    <span>قيمته 1,200</span><Icons.SarSymbol className="w-3 h-3" />
                   </span>
                 </div>
               </div>
-
-              <div className="h-[195px] bg-white/75 backdrop-blur-xs rounded-xl p-3 flex items-center justify-center shadow-inner my-auto">
-                <img
-                  src="https://m.media-amazon.com/images/I/71wF7Y6Q+JL._AC_SL1500_.jpg"
-                  alt="صندوق عافية"
-                  className="max-h-full object-contain group-hover:scale-105 transition"
-                />
+              <div className="h-[195px] bg-white/75 rounded-xl p-3 flex items-center justify-center shadow-inner my-auto">
+                <img src="https://m.media-amazon.com/images/I/71wF7Y6Q+JL._AC_SL1500_.jpg" alt="صندوق عافية" className="max-h-full object-contain group-hover:scale-105 transition" />
               </div>
-
               <div className="flex items-center justify-between text-[9px] text-gray-800 z-10">
-                <Icons.ReplayIcon />
-                <span>*تطبق الشروط والأحكام</span>
+                <Icons.ReplayIcon /><span>*تطبق الشروط والأحكام</span>
               </div>
             </div>
 
-            {/* العمود 2: بانر EMAAR - Luxury Homes بخلفية كحلية داكنة #061A32 */}
-            <div
-              onClick={() => setCategory("المنزل")}
-              className="cursor-pointer h-[390px] rounded-2xl overflow-hidden bg-[#061A32] text-white flex flex-col justify-between relative shadow-2xs group"
-            >
+            {/* العمود 2: EMAAR */}
+            <div onClick={() => setCategory("المنزل")} className="cursor-pointer h-[390px] rounded-2xl overflow-hidden bg-[#061A32] text-white flex flex-col justify-between relative shadow-2xs group">
               <div className="p-5 text-center space-y-1.5 z-10">
                 <p className="italic font-serif text-2xl text-[#E5C185]">Luxury Homes</p>
                 <p className="text-[11px] tracking-[0.22em] uppercase font-semibold text-gray-200">LIKE NO OTHER</p>
                 <p className="text-[9px] text-gray-400 pt-1">STARTING FROM</p>
                 <div className="border border-white/25 bg-white/5 rounded-md py-1.5 px-5 inline-flex items-center gap-1.5">
-                  <Icons.SarSymbol className="w-4 h-4 text-white" />
-                  <span className="text-xl font-black tracking-wide">1.8Mn</span>
+                  <Icons.SarSymbol className="w-4 h-4 text-white" /><span className="text-xl font-black tracking-wide">1.8Mn</span>
                 </div>
                 <p className="text-sm font-bold tracking-[0.3em] pt-1">EMAAR</p>
               </div>
-
-              {/* رسم معماري ذهبي فاخر للأبراج المضيئة بدون صور خارجية عشوائية */}
               <div className="h-[190px] w-full bg-gradient-to-t from-amber-500/30 via-[#0B294B] to-transparent flex items-end justify-center px-4 pb-2 relative">
                 <div className="flex items-end gap-2 w-full justify-center opacity-90">
                   <div className="w-8 h-24 bg-gradient-to-t from-amber-300/70 to-slate-400/40 rounded-t" />
@@ -890,150 +710,80 @@ export default function NoonPixelPerfectReplica() {
               </div>
             </div>
 
-            {/* العمود 3: بانر عروض 11.11 بتدرج بنفسجي #8B5CF6 إلى #E9D5FF بدعم الماجد للعود وبنك البلاد */}
-            <div
-              onClick={() => setCategory("الجمال والعطور")}
-              className="cursor-pointer h-[390px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#8B5CF6] to-[#E9D5FF] p-4 flex flex-col justify-between relative shadow-2xs group"
-            >
+            {/* العمود 3: عروض 11.11 الماجد للعود + بنك البلاد */}
+            <div onClick={() => setCategory("الجمال والعطور")} className="cursor-pointer h-[390px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#8B5CF6] to-[#E9D5FF] p-4 flex flex-col justify-between relative shadow-2xs group">
               <div className="text-center space-y-1 z-10">
-                <div className="inline-block bg-[#FEEE00] text-[#111] border border-[#111] font-black px-3 py-0.2 rounded text-xs">
-                  عروض
-                </div>
+                <div className="inline-block bg-[#FEEE00] text-[#111] border border-[#111] font-black px-3 py-0.2 rounded text-xs">عروض</div>
                 <div className="text-3xl font-black text-white drop-shadow leading-none">11.11</div>
-                <span className="bg-white text-[#D61F69] font-black text-[11px] px-3 py-0.5 rounded inline-block">
-                  بدأت الحين
-                </span>
+                <span className="bg-white text-[#D61F69] font-black text-[11px] px-3 py-0.5 rounded inline-block">بدأت الحين</span>
                 <h3 className="text-base sm:text-lg font-black text-[#111] pt-0.5">عروض جديدة كل يوم</h3>
                 <div className="bg-white rounded-md px-3 py-1 inline-flex items-center gap-2 text-[11px] font-bold text-[#111] shadow-2xs">
-                  <span>بدعم من:</span>
-                  <strong className="font-black text-[#111]">الماجد للعود</strong>
+                  <span>بدعم من:</span><strong className="font-black text-[#111]">الماجد للعود</strong>
                 </div>
               </div>
-
               <div className="my-auto flex items-center justify-center gap-3 bg-white/70 rounded-xl p-2.5 h-[135px]">
-                <img
-                  src="https://m.media-amazon.com/images/I/61A8c5-yKVL._AC_SL1500_.jpg"
-                  alt="الماجد للعود"
-                  className="h-full object-contain group-hover:scale-105 transition"
-                />
-                <img
-                  src="https://m.media-amazon.com/images/I/61d5F64UDpL._AC_SL1500_.jpg"
-                  alt="JBL"
-                  className="h-full object-contain group-hover:scale-105 transition"
-                />
+                <img src="https://m.media-amazon.com/images/I/61A8c5-yKVL._AC_SL1500_.jpg" alt="الماجد للعود" className="h-full object-contain group-hover:scale-105 transition" />
+                <img src="https://m.media-amazon.com/images/I/61d5F64UDpL._AC_SL1500_.jpg" alt="JBL" className="h-full object-contain group-hover:scale-105 transition" />
               </div>
-
               <div className="bg-white rounded-xl p-2 text-center shadow-xs border border-purple-100">
-                <p className="text-xs font-black text-[#111]">
-                  خصم إضافي 15%* <span className="text-[#C81E1E] font-bold mr-1">بنك البلاد</span>
-                </p>
+                <p className="text-xs font-black text-[#111]">خصم إضافي 15%* <span className="text-[#C81E1E] font-bold mr-1">بنك البلاد</span></p>
                 <p className="text-[9px] text-gray-500">مع بطاقات الخصم المباشر أو مسبقة الدفع</p>
               </div>
             </div>
 
-            {/* العمود 4 (يسار): مقسوم عمودياً إلى بطاقتين (العلوية 160px + السفلية 218px) */}
+            {/* العمود 4: بطاقة نون الأول (160px) + أقل أسعار السنة (218px) */}
             <div className="flex flex-col gap-3 h-[390px]">
-              {/* البطاقة العلوية بارتفاع 160px باللون الأصفر #FEEE00 */}
-              <div
-                onClick={() => setCategory("deals")}
-                className="cursor-pointer h-[160px] bg-[#FEEE00] rounded-2xl p-4 flex items-center justify-between gap-2 shadow-2xs relative overflow-hidden group"
-              >
+              <div onClick={() => setCategory("deals")} className="cursor-pointer h-[160px] bg-[#FEEE00] rounded-2xl p-4 flex items-center justify-between gap-2 shadow-2xs relative overflow-hidden group">
                 <div className="space-y-1 z-10 text-right">
                   <div className="flex items-center gap-1.5 text-xs font-black text-[#111]">
-                    <span>نون</span>
-                    <span>|</span>
-                    <span className="text-[10px] font-extrabold">الأول SAB</span>
+                    <span>نون</span><span>|</span><span className="text-[10px] font-extrabold">الأول SAB</span>
                     <span className="bg-red-600 text-white px-1 rounded text-[9px]">⟨⟩</span>
                   </div>
                   <h3 className="text-[17px] font-black text-[#111] leading-tight">10% استرداد نقدي</h3>
                   <p className="text-xs font-bold text-[#111]/80">كرصيد نون</p>
                   <p className="text-xs font-black text-[#111] flex items-center gap-1">
-                    <span>+ 250</span>
-                    <Icons.SarSymbol className="w-3 h-3" />
-                    <span>مكافأة ترحيبية</span>
+                    <span>+ 250</span><Icons.SarSymbol className="w-3 h-3" /><span>مكافأة ترحيبية</span>
                   </p>
                   <span className="text-[8px] text-gray-700 block">*تطبق الشروط والأحكام</span>
                 </div>
-
-                {/* رسم بطاقة VISA الصفراء */}
                 <div className="w-32 h-22 bg-gradient-to-br from-[#FFF566] to-[#F5D000] rounded-xl border border-black/15 shadow-md p-2.5 flex flex-col justify-between shrink-0 group-hover:scale-105 transition">
                   <div className="flex justify-between items-center text-[9px] font-black text-[#111]">
-                    <span className="text-red-600">⟨⟩ SAB</span>
-                    <span>VISA</span>
+                    <span className="text-red-600">⟨⟩ SAB</span><span>VISA</span>
                   </div>
                   <div className="font-black text-2xl text-[#111] tracking-tighter text-left">noon</div>
                 </div>
               </div>
 
-              {/* البطاقة السفلية بارتفاع 218px باللون البنفسجي */}
-              <div
-                onClick={() => setCategory("المنزل")}
-                className="cursor-pointer h-[218px] bg-gradient-to-br from-[#8C52FF] via-[#A87BFF] to-[#D4B8FF] rounded-2xl p-4 text-white flex flex-col justify-between shadow-2xs relative overflow-hidden group"
-              >
+              <div onClick={() => setCategory("المنزل")} className="cursor-pointer h-[218px] bg-gradient-to-br from-[#8C52FF] via-[#A87BFF] to-[#D4B8FF] rounded-2xl p-4 text-white flex flex-col justify-between shadow-2xs relative overflow-hidden group">
                 <div className="flex justify-between items-start z-10">
                   <div className="text-right">
                     <h3 className="text-xl font-black leading-tight text-white">أقل أسعار السنة</h3>
                     <p className="text-xs text-white/90 font-bold">عروض جديدة كل يوم</p>
                   </div>
                   <div className="bg-[#FEEE00] text-[#111] px-2.5 py-1 rounded-b-xl font-black text-center leading-tight shadow">
-                    <span className="text-[10px] block">عروض</span>
-                    <span className="text-base text-fuchsia-700">11.11</span>
+                    <span className="text-[10px] block">عروض</span><span className="text-base text-fuchsia-700">11.11</span>
                   </div>
                 </div>
-
                 <div className="h-[115px] bg-white/85 rounded-xl p-2 flex items-center justify-center gap-4 z-10">
-                  <img
-                    src="https://m.media-amazon.com/images/I/51rA8-t2p2L._AC_SL1000_.jpg"
-                    alt="حماصة خبز SMEG"
-                    className="h-full object-contain group-hover:scale-105 transition"
-                  />
-                  <img
-                    src="https://m.media-amazon.com/images/I/51wX7O6xL6L._AC_SL1500_.jpg"
-                    alt="مج حراري ستانلي"
-                    className="h-full object-contain group-hover:scale-105 transition"
-                  />
+                  <img src="https://m.media-amazon.com/images/I/51rA8-t2p2L._AC_SL1000_.jpg" alt="SMEG" className="h-full object-contain group-hover:scale-105 transition" />
+                  <img src="https://m.media-amazon.com/images/I/51wX7O6xL6L._AC_SL1500_.jpg" alt="Stanley" className="h-full object-contain group-hover:scale-105 transition" />
                 </div>
               </div>
             </div>
           </section>
 
-          {/* =============================================================== */}
-          {/* 4. شريط الكروت الـ 12 المربعة (Yellow-Framed Category Strip) */}
-          {/* =============================================================== */}
+          {/* 4. شريط الكروت الـ 12 المربعة (104px × 104px) */}
           <section className="bg-[#FFF9EB] p-4 rounded-[16px] border border-[#F5E6C8] relative">
-            <button
-              onClick={() => scrollPromoStrip(1)}
-              className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-md border items-center justify-center font-bold text-[#111] hover:bg-[#FEEE00] transition"
-            >
-              ›
-            </button>
-
-            <div
-              ref={stripRef}
-              className="flex items-center justify-between gap-3 overflow-x-auto no-scrollbar scroll-smooth px-1"
-            >
+            <button onClick={() => scrollPromoStrip(1)} className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-md border items-center justify-center font-bold text-[#111] hover:bg-[#FEEE00] transition">›</button>
+            <div ref={stripRef} className="flex items-center justify-between gap-3 overflow-x-auto no-scrollbar scroll-smooth px-1">
               {promoSquareCards.map((card, i) => (
-                <div
-                  key={i}
-                  onClick={() => {
-                    setCategory(card.cat);
-                    setSearch("");
-                  }}
-                  className="cursor-pointer w-[104px] shrink-0 flex flex-col items-center group"
-                >
-                  {/* مربع الصورة: h-[104px] rounded-2xl bg-[#FEEE00] p-1.5 overflow-hidden */}
+                <div key={i} onClick={() => { setCategory(card.cat); setSearch(""); }} className="cursor-pointer w-[104px] shrink-0 flex flex-col items-center group">
                   <div className="w-[104px] h-[104px] rounded-2xl bg-[#FEEE00] p-1.5 overflow-hidden flex items-center justify-center shadow-2xs group-hover:scale-105 transition">
                     {card.is1111 ? (
                       <div className="text-center">
-                        <span className="bg-red-600 text-white text-[9px] font-black px-2 py-0.2 rounded-full block mb-0.5">
-                          عرض
-                        </span>
-                        <div className="bg-[#FEEE00] border border-[#111] px-2 py-0.2 rounded font-black text-[11px] text-[#111]">
-                          عروض
-                        </div>
-                        <div className="text-2xl font-black text-fuchsia-700 leading-none mt-0.5">
-                          11.11
-                        </div>
+                        <span className="bg-red-600 text-white text-[9px] font-black px-2 py-0.2 rounded-full block mb-0.5">عرض</span>
+                        <div className="bg-[#FEEE00] border border-[#111] px-2 py-0.2 rounded font-black text-[11px] text-[#111]">عروض</div>
+                        <div className="text-2xl font-black text-fuchsia-700 leading-none mt-0.5">11.11</div>
                       </div>
                     ) : (
                       <div className="w-full h-full bg-white rounded-xl p-1 flex items-center justify-center overflow-hidden">
@@ -1041,67 +791,35 @@ export default function NoonPixelPerfectReplica() {
                       </div>
                     )}
                   </div>
-
-                  {/* كبسولة الخصم المتداخلة أسفل المربع: -mt-3 z-10 bg-[#5A1508] */}
                   <div className="-mt-3 z-10 bg-[#5A1508] text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow whitespace-nowrap flex items-center gap-0.5">
                     <span>{card.badge}</span>
                     {card.hasCurrency && <Icons.SarSymbol className="w-2.5 h-2.5 text-white" />}
                   </div>
-
-                  {/* اسم القسم أسفل الكبسولة بخط 12px font-extrabold text-[#111] */}
-                  <span className="text-[12px] font-extrabold text-[#111] mt-1 text-center line-clamp-1 group-hover:text-noonBlue">
-                    {card.title}
-                  </span>
+                  <span className="text-[12px] font-extrabold text-[#111] mt-1 text-center line-clamp-1 group-hover:text-noonBlue">{card.title}</span>
                 </div>
               ))}
             </div>
-
-            <button
-              onClick={() => scrollPromoStrip(-1)}
-              className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-md border items-center justify-center font-bold text-[#111] hover:bg-[#FEEE00] transition"
-            >
-              ‹
-            </button>
+            <button onClick={() => scrollPromoStrip(-1)} className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white shadow-md border items-center justify-center font-bold text-[#111] hover:bg-[#FEEE00] transition">‹</button>
           </section>
 
-          {/* =============================================================== */}
-          {/* 5. شبكة الـ 100 منتج الفريدة ببطاقة نون القياسية */}
-          {/* =============================================================== */}
+          {/* 5. شبكة الـ 100 منتج الفريدة */}
           <section className="space-y-3 pt-2">
             <div className="bg-[#F7F7FA] p-3.5 rounded-xl border border-[#E2E5F1] flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <h2 className="text-sm sm:text-base font-black text-[#111]">
-                  {search
-                    ? "نتائج البحث عن: " + search
-                    : category === "all"
-                    ? "عروض 11.11 وأحسن المنتجات في نون السعودية"
-                    : category === "deals"
-                    ? "شيك العروض وصفقات 11.11 الكبرى"
-                    : category === "wishlist"
-                    ? "قائمة المفضلة"
-                    : "قسم " + category}
+                  {search ? "نتائج البحث عن: " + search : category === "all" ? "عروض 11.11 وأحسن المنتجات في نون السعودية" : "قسم " + category}
                 </h2>
-                <span className="text-xs bg-[#FEEE00] text-[#111] px-2.5 py-0.5 rounded-full font-black">
-                  {filtered.length} منتج
-                </span>
+                <span className="text-xs bg-[#FEEE00] text-[#111] px-2.5 py-0.5 rounded-full font-black">{filtered.length} منتج</span>
               </div>
-
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="border border-[#E2E5F1] rounded-lg px-3 py-1.5 text-xs font-bold bg-white"
-              >
+              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="border border-[#E2E5F1] rounded-lg px-3 py-1.5 text-xs font-bold bg-white">
                 <option value="popular">الأكثر شعبية</option>
                 <option value="price-asc">السعر: من الأقل للأعلى</option>
                 <option value="price-desc">السعر: من الأعلى للأقل</option>
                 <option value="rating">الأعلى تقييماً</option>
               </select>
             </div>
-
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
-              {filtered.map((p) => (
-                <ProductCard key={p.id} p={p} />
-              ))}
+              {filtered.map((p) => <ProductCard key={p.id} p={p} />)}
             </div>
           </section>
         </main>
@@ -1110,26 +828,12 @@ export default function NoonPixelPerfectReplica() {
       {/* شريط الكوكيز السفلي العائم */}
       {showCookie && (
         <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-white border border-[#E2E5F1] shadow-2xl rounded-xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-4 max-w-xl w-[94%] text-xs">
-          <div className="flex items-center gap-2">
-            <span>🍪</span>
-            <p className="text-noonDark font-semibold">
-              نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا.{" "}
-              <span className="text-noonBlue underline cursor-pointer">تعرف على المزيد</span>
-            </p>
-          </div>
+          <p className="text-noonDark font-semibold">
+            🍪 نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا. <span className="text-noonBlue underline cursor-pointer">تعرف على المزيد</span>
+          </p>
           <div className="flex items-center gap-2 mr-auto">
-            <button
-              onClick={() => setShowCookie(false)}
-              className="border border-gray-300 hover:bg-gray-50 text-noonDark font-bold px-3 py-1 rounded-md"
-            >
-              تخصيص
-            </button>
-            <button
-              onClick={() => setShowCookie(false)}
-              className="bg-noonBlue hover:bg-blue-700 text-white font-bold px-4 py-1 rounded-md"
-            >
-              قبول
-            </button>
+            <button onClick={() => setShowCookie(false)} className="border border-gray-300 text-noonDark font-bold px-3 py-1 rounded-md">تخصيص</button>
+            <button onClick={() => setShowCookie(false)} className="bg-noonBlue text-white font-bold px-4 py-1 rounded-md">قبول</button>
           </div>
         </div>
       )}
@@ -1162,14 +866,8 @@ export default function NoonPixelPerfectReplica() {
               <div className="space-y-2 max-h-80 overflow-y-auto">
                 {orders.map((o) => (
                   <div key={o.id} className="border p-3 rounded-xl text-xs flex justify-between items-center">
-                    <div>
-                      <strong className="text-noonBlue block">{o.orderNumber}</strong>
-                      <span className="text-gray-500">{o.city} - {o.address}</span>
-                    </div>
-                    <div className="text-left">
-                      <span className="font-black block">{Number(o.totalAmount).toLocaleString()} ر.س</span>
-                      <span className="bg-green-100 text-noonGreen px-2 py-0.5 rounded text-[10px] font-bold">{o.status}</span>
-                    </div>
+                    <div><strong className="text-noonBlue block">{o.orderNumber}</strong><span className="text-gray-500">{o.city} - {o.address}</span></div>
+                    <div className="text-left"><span className="font-black block">{Number(o.totalAmount).toLocaleString()} ر.س</span><span className="bg-green-100 text-noonGreen px-2 py-0.5 rounded text-[10px] font-bold">{o.status}</span></div>
                   </div>
                 ))}
               </div>
@@ -1188,16 +886,7 @@ export default function NoonPixelPerfectReplica() {
             </div>
             <div className="grid grid-cols-2 gap-2 text-xs font-bold">
               {["الرياض", "جدة", "الدمام", "مكة المكرمة", "المدينة المنورة", "الخبر", "أبها", "تبوك"].map((c) => (
-                <button
-                  key={c}
-                  onClick={() => {
-                    setCity(c);
-                    setIsCityModalOpen(false);
-                  }}
-                  className={"p-2.5 border rounded-xl text-right " + (city === c ? "bg-[#FEEE00] border-[#111]" : "hover:bg-gray-50")}
-                >
-                  {c}
-                </button>
+                <button key={c} onClick={() => { setCity(c); setIsCityModalOpen(false); }} className={"p-2.5 border rounded-xl text-right " + (city === c ? "bg-[#FEEE00] border-[#111]" : "hover:bg-gray-50")}>{c}</button>
               ))}
             </div>
           </div>
@@ -1235,26 +924,12 @@ export default function NoonPixelPerfectReplica() {
             {cart.length > 0 && (
               <div className="border-t pt-3 space-y-2.5 text-xs">
                 <div className="flex gap-2">
-                  <input
-                    value={couponCode}
-                    onChange={(e) => setCouponCode(e.target.value)}
-                    placeholder="كود الخصم (KSA15 أو ALBILAD)"
-                    className="flex-1 border rounded-lg px-2.5 py-2 uppercase"
-                  />
+                  <input value={couponCode} onChange={(e) => setCouponCode(e.target.value)} placeholder="كود الخصم (KSA15 أو ALBILAD)" className="flex-1 border rounded-lg px-2.5 py-2 uppercase" />
                   <button onClick={applyCoupon} className="bg-noonDark text-white px-4 py-2 rounded-lg font-bold">تطبيق</button>
                 </div>
-                <div className="flex justify-between text-gray-500">
-                  <span>ضريبة القيمة المضافة (15% شاملة):</span>
-                  <span>{vat.toLocaleString()} ر.س</span>
-                </div>
-                <div className="flex justify-between text-base font-black text-[#111]">
-                  <span>الإجمالي النهائي:</span>
-                  <span>{finalTotal.toLocaleString()} ر.س</span>
-                </div>
-                <button
-                  onClick={() => setIsCheckoutOpen(true)}
-                  className="w-full bg-noonBlue text-white font-black py-3 rounded-xl text-sm shadow"
-                >
+                <div className="flex justify-between text-gray-500"><span>ضريبة القيمة المضافة (15% شاملة):</span><span>{vat.toLocaleString()} ر.س</span></div>
+                <div className="flex justify-between text-base font-black text-[#111]"><span>الإجمالي النهائي:</span><span>{finalTotal.toLocaleString()} ر.س</span></div>
+                <button onClick={() => setIsCheckoutOpen(true)} className="w-full bg-noonBlue text-white font-black py-3 rounded-xl text-sm shadow">
                   إتمام الشراء والدفع ({finalTotal.toLocaleString()} ر.س)
                 </button>
               </div>
@@ -1290,22 +965,8 @@ export default function NoonPixelPerfectReplica() {
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-sm w-full p-6 space-y-4 text-center">
             <h3 className="font-black text-base">تسجيل الدخول إلى نون السعودية</h3>
-            <input
-              type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder="أدخل اسمك الكريم"
-              className="w-full border rounded-lg p-2.5 text-center text-sm"
-            />
-            <button
-              onClick={() => {
-                localStorage.setItem("noon_user_v8", userName);
-                setIsAuthModalOpen(false);
-              }}
-              className="w-full bg-noonDark text-[#FEEE00] font-black py-2.5 rounded-lg text-sm"
-            >
-              دخول
-            </button>
+            <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="أدخل اسمك الكريم" className="w-full border rounded-lg p-2.5 text-center text-sm" />
+            <button onClick={() => { localStorage.setItem("noon_user_v10", userName); setIsAuthModalOpen(false); }} className="w-full bg-noonDark text-[#FEEE00] font-black py-2.5 rounded-lg text-sm">دخول</button>
           </div>
         </div>
       )}
@@ -1313,7 +974,6 @@ export default function NoonPixelPerfectReplica() {
   );
 }`,
 
-  // 6. لوحة الإدارة المستقلة تماماً على المسار /admin مع زر استيراد 100 منتج إضافي في كل ضغطة
   'src/app/admin/page.jsx': `"use client";
 import { useState, useEffect } from "react";
 import { initialProducts, initialOrders, generate100UniqueCommercialProducts } from "../../lib/storeData";
@@ -1332,19 +992,16 @@ export default function AdminPortal() {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    const savedProds = localStorage.getItem("noon_prods_v8");
-    const savedOrders = localStorage.getItem("noon_orders_v8");
+    const savedProds = localStorage.getItem("noon_prods_v10");
+    const savedOrders = localStorage.getItem("noon_orders_v10");
     if (savedProds) setProducts(JSON.parse(savedProds));
     if (savedOrders) setOrders([...JSON.parse(savedOrders), ...initialOrders]);
   }, []);
 
   function handleLogin(e) {
     e.preventDefault();
-    if (password === "admin123") {
-      setIsAuthenticated(true);
-    } else {
-      alert("كلمة المرور غير صحيحة! استخدم: admin123");
-    }
+    if (password === "admin123") setIsAuthenticated(true);
+    else alert("كلمة المرور غير صحيحة! استخدم: admin123");
   }
 
   async function addProduct(e) {
@@ -1357,7 +1014,7 @@ export default function AdminPortal() {
     const newProd = await res.json();
     const updated = [newProd, ...products];
     setProducts(updated);
-    localStorage.setItem("noon_prods_v8", JSON.stringify(updated));
+    localStorage.setItem("noon_prods_v10", JSON.stringify(updated));
     setTitle(""); setPrice(""); setOldPrice(""); setImage("");
     alert("تم نشر المنتج في متجر نون بنجاح!");
   }
@@ -1367,14 +1024,14 @@ export default function AdminPortal() {
     setBatchCounter((prev) => prev + 1);
     const updated = [...new100, ...products];
     setProducts(updated);
-    localStorage.setItem("noon_prods_v8", JSON.stringify(updated));
+    localStorage.setItem("noon_prods_v10", JSON.stringify(updated));
     alert("تم استيراد 100 منتج تجاري جديد بنجاح! إجمالي المنتجات الآن: " + updated.length + " منتج.");
   }
 
   function deleteProduct(id) {
     const updated = products.filter((p) => p.id !== id);
     setProducts(updated);
-    localStorage.setItem("noon_prods_v8", JSON.stringify(updated));
+    localStorage.setItem("noon_prods_v10", JSON.stringify(updated));
   }
 
   if (!isAuthenticated) {
@@ -1400,15 +1057,10 @@ export default function AdminPortal() {
           <h1 className="text-xl sm:text-2xl font-black">لوحة تحكم الإدارة المركزية</h1>
         </div>
         <div className="flex flex-wrap gap-3">
-          <button
-            onClick={handleImport100More}
-            className="bg-[#FEEE00] hover:bg-yellow-300 text-[#111] font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg transition"
-          >
+          <button onClick={handleImport100More} className="bg-[#FEEE00] hover:bg-yellow-300 text-[#111] font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg transition">
             + استيراد 100 منتج تجاري دفعة واحدة
           </button>
-          <button onClick={() => setIsAuthenticated(false)} className="bg-red-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm">
-            تسجيل خروج
-          </button>
+          <button onClick={() => setIsAuthenticated(false)} className="bg-red-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm">تسجيل خروج</button>
         </div>
       </div>
 
@@ -1432,15 +1084,9 @@ export default function AdminPortal() {
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
           <input required value={title} onChange={(e) => setTitle(e.target.value)} placeholder="اسم المنتج" className="border p-2 rounded" />
           <select value={category} onChange={(e) => setCategory(e.target.value)} className="border p-2 rounded font-bold bg-white">
-            <option value="الإلكترونيات">الإلكترونيات</option>
-            <option value="الجمال والعطور">الجمال والعطور</option>
-            <option value="المنزل">المنزل</option>
-            <option value="البقالة">البقالة</option>
-            <option value="أزياء الرجال">أزياء الرجال</option>
-            <option value="أزياء النساء">أزياء النساء</option>
-            <option value="الألعاب">الألعاب</option>
-            <option value="الرياضة">الرياضة</option>
-            <option value="الصحة والتغذية">الصحة والتغذية</option>
+            {["الإلكترونيات", "الجمال والعطور", "المنزل", "البقالة", "أزياء الرجال", "أزياء النساء", "الألعاب", "الرياضة", "الصحة والتغذية"].map((c) => (
+              <option key={c} value={c}>{c}</option>
+            ))}
           </select>
           <input required type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="السعر (ر.س)" className="border p-2 rounded" />
           <input required type="number" value={oldPrice} onChange={(e) => setOldPrice(e.target.value)} placeholder="السعر قبل الخصم" className="border p-2 rounded" />
@@ -1479,4 +1125,4 @@ for (const [filePath, content] of Object.entries(files)) {
   fs.mkdirSync(path.dirname(fullPath), { recursive: true });
   fs.writeFileSync(fullPath, content, 'utf8');
 }
-console.log("✅ Noon KSA Pixel-Perfect Architecture Completed!");
+console.log("✅ Noon KSA Pixel-Perfect Build Ready!");
