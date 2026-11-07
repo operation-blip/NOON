@@ -44,7 +44,7 @@ module.exports = {
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
 body {
   font-family: 'Cairo', sans-serif;
-  background-color: #F7F7FA;
+  background-color: #FFFFFF;
   color: #404553;
   -webkit-tap-highlight-color: transparent;
 }
@@ -95,72 +95,67 @@ export default function RootLayout({ children }) {
   "أحسن المنتجات"
 ];
 
-// الكروت الـ 12 المربعة السفلية بصور منتجات استوديو مفرغة نظيفة مطابقة للصورة المرفقة
+// الكروت الـ 12 السفلية بصور كاملة غنية بخلفياتها بدون أي تفريغ كما في الصورة المرفقة
 export const promoSquareCards = [
   { title: "شيك العروض", badge: "تبدأ من 1", is1111: true, cat: "deals", img: "" },
-  { title: "المقاضي", badge: "تبدأ من 1", cat: "البقالة", img: "https://m.media-amazon.com/images/I/81I6xQ78H2L._AC_SL1500_.jpg" },
-  { title: "الجوالات", badge: "خصم حتى 50%", cat: "الإلكترونيات", img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=512&hei=512&fmt=jpeg&qlt=90" },
-  { title: "اللابتوبات", badge: "خصم حتى 150", cat: "الإلكترونيات", img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mba13-midnight-select-202402?wid=512&hei=512&fmt=jpeg&qlt=90" },
-  { title: "العناية الشخصية", badge: "خصم إضافي 10%", cat: "الجمال والعطور", img: "https://m.media-amazon.com/images/I/71k7R22+kXL._AC_SL1500_.jpg" },
-  { title: "أزياء النساء", badge: "خصم 50-80%", cat: "أزياء النساء", img: "https://m.media-amazon.com/images/I/61S7BrCBj7L._AC_SL1500_.jpg" },
-  { title: "أزياء الرجال", badge: "خصم 50-80%", cat: "أزياء الرجال", img: "https://m.media-amazon.com/images/I/61C+8r8rGJL._AC_SL1500_.jpg" },
-  { title: "مكائن القهوة", badge: "خصم حتى 60%", cat: "المنزل", img: "https://m.media-amazon.com/images/I/61X8tA3tF1L._AC_SL1500_.jpg" },
-  { title: "الصحة والتغذية", badge: "رصيد مسترجع 250", cat: "الصحة والتغذية", img: "https://m.media-amazon.com/images/I/71wF7Y6Q+JL._AC_SL1500_.jpg" },
-  { title: "السماعات", badge: "خصم حتى 70%", cat: "الإلكترونيات", img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=512&hei=512&fmt=jpeg&qlt=90" },
-  { title: "أجهزة للارتداء", badge: "خصم حتى 60%", cat: "الإلكترونيات", img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-s10-202409?wid=512&hei=512&fmt=jpeg&qlt=90" },
-  { title: "شنط الظهر", badge: "تبدأ من 19", cat: "أزياء الرجال", img: "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SL1500_.jpg" }
+  { title: "المقاضي", badge: "تبدأ من 1", cat: "البقالة", img: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=400&q=85" },
+  { title: "الجوالات", badge: "خصم حتى 50%", cat: "الإلكترونيات", img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=85" },
+  { title: "اللابتوبات", badge: "خصم حتى 150", cat: "الإلكترونيات", img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=85" },
+  { title: "العناية الشخصية", badge: "خصم إضافي 10%", cat: "الجمال والعطور", img: "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=400&q=85" },
+  { title: "أزياء النساء", badge: "خصم 50-80%", cat: "أزياء النساء", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=85" },
+  { title: "أزياء الرجال", badge: "خصم 50-80%", cat: "أزياء الرجال", img: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=400&q=85" },
+  { title: "مكائن القهوة", badge: "خصم حتى 60%", cat: "المنزل", img: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=400&q=85" },
+  { title: "الصحة والتغذية", badge: "رصيد مسترجع 250", cat: "الصحة والتغذية", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=85" },
+  { title: "السماعات", badge: "خصم حتى 70%", cat: "الإلكترونيات", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=85" },
+  { title: "أجهزة للارتداء", badge: "خصم حتى 60%", cat: "الإلكترونيات", img: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=85" },
+  { title: "شنط الظهر", badge: "تبدأ من 19", cat: "أزياء النساء", img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=400&q=85" }
 ];
 
-// كتالوج منتجات حقيقي بصور منتجات استوديو على خلفية بيضاء نظيفة (بدون أي صور Unsplash)
-const studioProductsRaw = [
-  // الإلكترونيات والجوالات
-  ["أبل", "آيفون 16 برو ماكس سعة 256 جيجابايت تيتانيوم صحراوي الجيل الخامس 5G مع فيس تايم", "الإلكترونيات", 5199, 5699, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["أبل", "آيفون 16 برو سعة 128 جيجابايت تيتانيوم طبيعي الجيل الخامس 5G", "الإلكترونيات", 4299, 4699, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-naturaltitanium?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["أبل", "آيفون 16 سعة 128 جيجابايت أزرق ألترامارين الجيل الخامس 5G", "الإلكترونيات", 3499, 3799, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-ultramarine?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["سامسونج", "جالكسي S24 ألترا ثنائي الشريحة 256 جيجابايت رام 12GB تيتانيوم رمادي 5G", "الإلكترونيات", 3899, 5399, "https://m.media-amazon.com/images/I/71WcjsOVOmL._AC_SL1500_.jpg"],
-  ["سامسونج", "جالكسي زد فولد 6 ثنائي الشريحة سعة 512 جيجابايت فضي شادو 5G", "الإلكترونيات", 5999, 7299, "https://m.media-amazon.com/images/I/61BgEfmZC8L._AC_SL1500_.jpg"],
-  ["أبل", "ماك بوك إير شاشة 13.6 بوصة شريحة M3 ذاكرة 256GB SSD سماء الليل", "الإلكترونيات", 4199, 4799, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mba13-midnight-select-202402?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["أبل", "ماك بوك برو 14 بوصة شريحة M3 Pro رام 18GB وذاكرة 512GB أسود فلكي", "الإلكترونيات", 7499, 8499, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202310?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["أبل", "آيباد برو 11 بوصة شاشة Ultra Retina XDR شريحة M4 سعة 256GB", "الإلكترونيات", 3899, 4399, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-spaceblack?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["أبل", "سماعة إيربودز برو (الجيل الثاني) مع علبة شحن MagSafe بمنفذ USB-C", "الإلكترونيات", 849, 1099, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJV3?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["أبل", "سماعة الرأس اللاسلكية AirPods Max بخاصية إلغاء الضجيج النشط - رمادي فلكي", "الإلكترونيات", 1999, 2399, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["أبل", "ساعة أبل واتش سيريس 10 مقاس 46 ملم إطار ألمنيوم أسود لامع", "الإلكترونيات", 1649, 1899, "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-card-40-s10-202409?wid=800&hei=800&fmt=jpeg&qlt=90"],
-  ["سوني", "سماعة الرأس اللاسلكية WH-1000XM5 العازلة للضوضاء بالكامل - أسود", "الإلكترونيات", 1149, 1599, "https://m.media-amazon.com/images/I/51aXvjzcukL._AC_SL1500_.jpg"],
-  ["جي بي إل", "سماعة بلوتوث محمولة JBL Flip 6 مقاومة للماء بقوة صوت فائقة", "الإلكترونيات", 379, 549, "https://m.media-amazon.com/images/I/61d5F64UDpL._AC_SL1500_.jpg"],
+// كتالوج المنتجات بصور كاملة غنية بدون تفريغ
+const fullImagesCatalogRaw = [
+  ["أبل", "آيفون 16 برو ماكس سعة 256 جيجابايت تيتانيوم صحراوي الجيل الخامس 5G مع فيس تايم", "الإلكترونيات", 5199, 5699, "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=85"],
+  ["أبل", "آيفون 16 برو سعة 128 جيجابايت تيتانيوم طبيعي الجيل الخامس 5G", "الإلكترونيات", 4299, 4699, "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=85"],
+  ["سامسونج", "جالكسي S24 ألترا ثنائي الشريحة 256 جيجابايت رام 12GB تيتانيوم رمادي 5G", "الإلكترونيات", 3899, 5399, "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=85"],
+  ["سامسونج", "جالكسي زد فولد 6 ثنائي الشريحة سعة 512 جيجابايت فضي 5G", "الإلكترونيات", 5999, 7299, "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=85"],
+  ["أبل", "ماك بوك إير شاشة 13.6 بوصة شريحة M3 ذاكرة 256GB SSD سماء الليل", "الإلكترونيات", 4199, 4799, "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=85"],
+  ["أبل", "ماك بوك برو 14 بوصة شريحة M3 Pro رام 18GB وذاكرة 512GB أسود فلكي", "الإلكترونيات", 7499, 8499, "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=85"],
+  ["أبل", "آيباد برو 11 بوصة شاشة Ultra Retina XDR شريحة M4 سعة 256GB", "الإلكترونيات", 3899, 4399, "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=85"],
+  ["أبل", "سماعة إيربودز برو (الجيل الثاني) مع علبة شحن MagSafe بمنفذ USB-C", "الإلكترونيات", 849, 1099, "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=85"],
+  ["سوني", "سماعة الرأس اللاسلكية WH-1000XM5 العازلة للضوضاء بالكامل - أسود", "الإلكترونيات", 1149, 1599, "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=85"],
+  ["أبل", "ساعة أبل واتش سيريس 10 مقاس 46 ملم إطار ألمنيوم أسود لامع", "الإلكترونيات", 1649, 1899, "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=85"],
+  ["سامسونج", "شاشة ذكية 65 بوصة 4K Crystal UHD تدعم شاهد ونتفليكس", "الإلكترونيات", 1999, 2899, "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=85"],
+  ["أسوس", "لابتوب الألعاب ROG Strix G16 معالج i9 وكرت شاشة RTX 4070", "الإلكترونيات", 5299, 6499, "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=85"],
+  ["جي بي إل", "سماعة بلوتوث محمولة JBL Flip 6 مقاومة للماء بقوة صوت فائقة", "الإلكترونيات", 379, 549, "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=85"],
 
-  // الألعاب
-  ["سوني", "جهاز بلايستيشن 5 سليم (PS5 Slim) نسخة الأقراص سعة 1 تيرابايت - إصدار السعودية", "الألعاب", 1849, 2299, "https://m.media-amazon.com/images/I/41c+1k91kYL._AC_SL1000_.jpg"],
-  ["سوني", "يد تحكم لاسلكية DualSense لجهاز بلايستيشن 5 - أبيض", "الألعاب", 269, 349, "https://m.media-amazon.com/images/I/61O9tWR6WDS._AC_SL1500_.jpg"],
-  ["نينتندو", "جهاز نينتندو سويتش شاشة OLED مع وحدات تحكم Joy-Con نيون", "الألعاب", 1199, 1499, "https://m.media-amazon.com/images/I/61dYrzvBLbL._AC_SL1500_.jpg"],
+  ["سوني", "جهاز بلايستيشن 5 سليم (PS5 Slim) نسخة الأقراص سعة 1 تيرابايت - إصدار السعودية", "الألعاب", 1849, 2299, "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=85"],
+  ["سوني", "يد تحكم لاسلكية DualSense لجهاز بلايستيشن 5 - أبيض وأسود", "الألعاب", 269, 349, "https://images.unsplash.com/photo-1592840496694-26d035b52b48?auto=format&fit=crop&w=800&q=85"],
+  ["نينتندو", "جهاز نينتندو سويتش شاشة OLED مع وحدات تحكم Joy-Con نيون", "الألعاب", 1199, 1499, "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?auto=format&fit=crop&w=800&q=85"],
 
-  // المنزل والمطبخ
-  ["فيليبس", "قلاية هوائية بحجم عائلي XXL سعة 6.2 لتر بقوة 2000 واط - أسود", "المنزل", 449, 899, "https://m.media-amazon.com/images/I/71+2bd2P4zL._AC_SL1500_.jpg"],
-  ["ديلونجي", "ماكينة تحضير القهوة والإسبريسو ديديكا أرتي 15 بار ستانلس ستيل", "المنزل", 699, 999, "https://m.media-amazon.com/images/I/61X8tA3tF1L._AC_SL1500_.jpg"],
-  ["سميج (SMEG)", "حماصة خبز ريترو بفتحتين بتصميم الخمسينات الإيطالي - أخضر باستيل", "المنزل", 649, 899, "https://m.media-amazon.com/images/I/51rA8-t2p2L._AC_SL1000_.jpg"],
-  ["ستانلي", "مج حراري Quencher H2.0 حافظ للبرودة سعة 1.18 لتر بمصاصة - برتقالي", "المنزل", 169, 240, "https://m.media-amazon.com/images/I/51wX7O6xL6L._AC_SL1500_.jpg"],
-  ["دايسون", "مكنسة كهربائية لاسلكية V15 Detect Absolute بكاشف الغبار الليزري", "المنزل", 2399, 3199, "https://m.media-amazon.com/images/I/61M6l+F6NBL._AC_SL1500_.jpg"],
-  ["نسبرسو", "ماكينة قهوة كبسولات إيسينزا ميني مع خافق حليب إيروتشينو - أسود", "المنزل", 549, 849, "https://m.media-amazon.com/images/I/61f2G9rT8EL._AC_SL1500_.jpg"],
+  ["فيليبس", "قلاية هوائية بحجم عائلي XXL سعة 6.2 لتر بقوة 2000 واط - أسود", "المنزل", 449, 899, "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=800&q=85"],
+  ["ديلونجي", "ماكينة تحضير القهوة والإسبريسو ديديكا أرتي 15 بار ستانلس ستيل", "المنزل", 699, 999, "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=800&q=85"],
+  ["سميج (SMEG)", "حماصة خبز ريترو بفتحتين بتصميم الخمسينات الإيطالي - أخضر نعناعي", "المنزل", 649, 899, "https://images.unsplash.com/photo-1584990347449-a2d4c2c044c9?auto=format&fit=crop&w=800&q=85"],
+  ["ستانلي", "مج حراري Quencher H2.0 حافظ للبرودة سعة 1.18 لتر بمصاصة - برتقالي", "المنزل", 169, 240, "https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800&q=85"],
+  ["دايسون", "مكنسة كهربائية لاسلكية V15 Detect Absolute بكاشف الغبار الليزري", "المنزل", 2399, 3199, "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=85"],
 
-  // الجمال والعطور والصحة
-  ["الماجد للعود", "عطر برستيج روبي أو دي بارفيوم 100 مل - عروض 11.11 الحصرية", "الجمال والعطور", 165, 330, "https://m.media-amazon.com/images/I/61tE7I0fP0L._AC_SL1500_.jpg"],
-  ["ديور", "عطر سوفاج أو دي بارفيوم للرجال 100 مل - أصلي 100%", "الجمال والعطور", 489, 650, "https://m.media-amazon.com/images/I/61A8c5-yKVL._AC_SL1500_.jpg"],
-  ["دايسون", "جهاز تصفيف الشعر إير راب الملتي ستايلر الكامل للشعر الطويل", "الجمال والعطور", 1999, 2499, "https://m.media-amazon.com/images/I/61g8G9R5ZBL._AC_SL1500_.jpg"],
-  ["فيليبس", "ماكينة حلاقة وتنعيم اللحية للرجال OneBlade مقاومة للماء", "الجمال والعطور", 149, 249, "https://m.media-amazon.com/images/I/71k7R22+kXL._AC_SL1500_.jpg"],
-  ["ناو فودز", "أوميجا 3 زيت السمك المقطر جزيئياً 1000 مجم - 200 كبسولة هلامية", "الصحة والتغذية", 65, 110, "https://m.media-amazon.com/images/I/71wF7Y6Q+JL._AC_SL1500_.jpg"],
+  ["الماجد للعود", "عطر برستيج روبي أو دي بارفيوم 100 مل - عروض 11.11 الحصرية", "الجمال والعطور", 165, 330, "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85"],
+  ["ديور", "عطر سوفاج أو دي بارفيوم للرجال 100 مل - أصلي 100%", "الجمال والعطور", 489, 650, "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=85"],
+  ["دايسون", "جهاز تصفيف الشعر إير راب الملتي ستايلر الكامل للشعر الطويل", "الجمال والعطور", 1999, 2499, "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=85"],
+  ["لاروش بوزيه", "صندوق عافية ومجموعة العناية المتكاملة بالبشرة والشعر", "الصحة والتغذية", 199, 399, "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=85"],
 
-  // البقالة والأزياء
-  ["تايد", "مسحوق غسيل أوتوماتيكي مركز برائحة داوني الأصلية - 7 كجم", "البقالة", 59, 98, "https://m.media-amazon.com/images/I/81I6xQ78H2L._AC_SL1500_.jpg"],
-  ["أديداس", "شنطة ظهر كلاسيكية مبطنة للابتوب والجامعة مقاومة للماء - أسود", "أزياء الرجال", 89, 179, "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SL1500_.jpg"],
-  ["كاسيو", "ساعة يد رجالية كلاسيكية ستانلس ستيل مقاومة للماء - فضي", "أزياء الرجال", 145, 220, "https://m.media-amazon.com/images/I/61C+8r8rGJL._AC_SL1500_.jpg"]
+  ["تايد", "مسحوق غسيل أوتوماتيكي مركز برائحة النظافة الأصلية - 7 كجم", "البقالة", 59, 98, "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=800&q=85"],
+  ["الوليمة", "أرز بسمتي هندي مزة طويل الحبة فاخر - كيس 10 كجم", "البقالة", 79, 115, "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=85"],
+  ["أزياء الخليج", "عباية خليجية سوداء فاخرة بتطريز هادئ مع طرحة شيفون", "أزياء النساء", 159, 299, "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85"],
+  ["نايكي", "حذاء الجري الرياضي إير زوم بيجاسوس للرجال أحمر وأسود", "الرياضة", 329, 549, "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85"],
+  ["كاسيو", "ساعة يد رجالية كلاسيكية ستانلس ستيل مقاومة للماء - فضي", "أزياء الرجال", 145, 220, "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=85"]
 ];
 
-export function buildCleanCatalog(rawList, startId = 1) {
+export function buildFullCatalog(rawList, startId = 1) {
   const badges = ["عروض 11.11", "الأكثر مبيعاً", "خصم بنك البلاد 15%", "أقل سعر بالسنة", "هدية مجانية", "اختيار نون"];
   return rawList.map((item, idx) => ({
     id: startId + idx,
     brand: item[0],
-    sku: "N" + (500000 + startId + idx) + "KSA",
-    title: item[0] + " " + item[1],
+    sku: "N" + (600000 + startId + idx) + "KSA",
+    title: item[0] + " - " + item[1],
     category: item[2],
     price: item[3],
     oldPrice: item[4],
@@ -184,14 +179,14 @@ export function buildCleanCatalog(rawList, startId = 1) {
     specs: {
       "العلامة التجارية": item[0],
       "القسم": item[2],
-      "رقم الموديل": "N" + (500000 + startId + idx) + "KSA",
+      "رقم الموديل": "N" + (600000 + startId + idx) + "KSA",
       "الضمان": "سنتين ضمان الوكيل بالسعودية",
       "الشحن": "نون إكسبريس السريع"
     }
   }));
 }
 
-export function generate100StudioBatch(batchNumber = 1) {
+export function generate100FullBatch(batchNumber = 1) {
   const generatedRaw = [];
   const specsVar = [
     "إصدار الشرق الأوسط الرسمي", "النسخة المطورة 2026", "حجم التوفير العائلي",
@@ -199,23 +194,23 @@ export function generate100StudioBatch(batchNumber = 1) {
     "نسخة الخليج المعتمدة", "الباقة المتكاملة مع الملحقات", "إصدار مهرجان 11.11", "الأكثر طلباً في الرياض"
   ];
   for (let i = 0; i < 100; i++) {
-    const base = studioProductsRaw[i % studioProductsRaw.length];
-    const variantText = specsVar[Math.floor(i / studioProductsRaw.length) % specsVar.length];
+    const base = fullImagesCatalogRaw[i % fullImagesCatalogRaw.length];
+    const variantText = specsVar[Math.floor(i / fullImagesCatalogRaw.length) % specsVar.length];
     const priceOffset = ((i * 17) % 90) - 30;
     const finalPrice = Math.max(35, base[3] + priceOffset);
     generatedRaw.push([
       base[0],
-      base[1] + " - " + variantText + " [دفعة #" + batchNumber + "-" + (i + 1) + "]",
+      base[1] + " - " + variantText + " (موديل " + batchNumber + "-" + (i + 1) + ")",
       base[2],
       finalPrice,
       Math.round(finalPrice * 1.32),
       base[5]
     ]);
   }
-  return buildCleanCatalog(generatedRaw, Date.now());
+  return buildFullCatalog(generatedRaw, Date.now());
 }
 
-export const initialProducts = buildCleanCatalog(studioProductsRaw, 1);
+export const initialProducts = buildFullCatalog(fullImagesCatalogRaw, 1);
 
 export const initialOrders = [
   { id: 101, orderNumber: "NOON-KSA-88412", customerName: "عبدالله الغامدي", customerPhone: "0551234567", city: "الرياض", address: "حي الملقا، طريق الملك فهد", paymentMethod: "بطاقة مدى / فيزا", totalAmount: 5199, status: "خرج للتوصيل" },
@@ -285,12 +280,11 @@ export async function POST(request) {
   return NextResponse.json(newOrder, { status: 201 });
 }`,
 
-  // الواجهة الرئيسية المطابقة للصورة وكود نون الأصلي
+  // الواجهة الرئيسية بصور كاملة غنية بدون أي تفريغ
   'src/app/page.jsx': `"use client";
 import { useState, useEffect, useRef } from "react";
 import { initialProducts, navCategories, promoSquareCards } from "../lib/storeData";
 
-// رمز عملة الريال السعودي الجديد في موقع نون (SAR Symbol SVG) + أيقونات نون الأصلية
 const Icons = {
   SarSymbol: ({ className = "w-3.5 h-3.5 inline-block" }) => (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -350,7 +344,7 @@ const Icons = {
   )
 };
 
-export default function NoonSaudiExactReplica() {
+export default function NoonSaudiFullImagesReplica() {
   const [products, setProducts] = useState(initialProducts);
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
@@ -383,11 +377,11 @@ export default function NoonSaudiExactReplica() {
   const stripRef = useRef(null);
 
   useEffect(() => {
-    const savedProds = localStorage.getItem("noon_prods_v6");
+    const savedProds = localStorage.getItem("noon_prods_v7");
     if (savedProds) setProducts(JSON.parse(savedProds));
-    const savedOrders = localStorage.getItem("noon_orders_v6");
+    const savedOrders = localStorage.getItem("noon_orders_v7");
     if (savedOrders) setOrders(JSON.parse(savedOrders));
-    const savedUser = localStorage.getItem("noon_user_v6");
+    const savedUser = localStorage.getItem("noon_user_v7");
     if (savedUser) setUserName(savedUser);
   }, []);
 
@@ -476,7 +470,7 @@ export default function NoonSaudiExactReplica() {
     const order = await res.json();
     const updatedOrders = [order, ...orders];
     setOrders(updatedOrders);
-    localStorage.setItem("noon_orders_v6", JSON.stringify(updatedOrders));
+    localStorage.setItem("noon_orders_v7", JSON.stringify(updatedOrders));
     alert("تم تأكيد طلبك بنجاح! رقم الشحنة: " + order.orderNumber);
     setCart([]);
     setDiscountRate(0);
@@ -484,7 +478,7 @@ export default function NoonSaudiExactReplica() {
     setIsCartOpen(false);
   }
 
-  // بطاقة منتج نون الأصلية بصور استوديو مفرغة على خلفية بيضاء
+  // بطاقة المنتج بالصورة الأصلية الكاملة بدون أي تفريغ (object-cover)
   function ProductCard({ p }) {
     const disc = Math.max(0, Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100));
     const isFav = wishlist.includes(p.id);
@@ -494,8 +488,13 @@ export default function NoonSaudiExactReplica() {
         className="cursor-pointer bg-white rounded-xl p-2.5 sm:p-3 border border-gray-200/80 hover:shadow-md transition-all flex flex-col justify-between relative group"
       >
         <div>
-          <div className="flex justify-between items-center mb-1.5 z-10 relative">
-            <span className="bg-noonDark text-white text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full truncate max-w-[130px]">
+          <div className="relative h-44 sm:h-52 w-full rounded-lg overflow-hidden mb-2 bg-gray-100">
+            <img
+              src={p.image}
+              alt={p.title}
+              className="h-full w-full object-cover group-hover:scale-105 transition duration-300"
+            />
+            <span className="absolute top-2 right-2 bg-noonDark/90 text-white text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full truncate max-w-[130px]">
               {p.badge}
             </span>
             <button
@@ -503,31 +502,23 @@ export default function NoonSaudiExactReplica() {
                 e.stopPropagation();
                 toggleWishlist(p.id);
               }}
-              className="w-7 h-7 rounded-full bg-white shadow-xs border border-gray-100 flex items-center justify-center hover:scale-110 transition"
+              className="absolute top-2 left-2 w-7 h-7 rounded-full bg-white/95 shadow-xs flex items-center justify-center hover:scale-110 transition"
             >
               <Icons.Heart filled={isFav} />
             </button>
-          </div>
-
-          <div className="relative h-44 sm:h-48 flex items-center justify-center my-1 bg-white rounded-lg overflow-hidden p-3">
-            <img
-              src={p.image}
-              alt={p.title}
-              className="h-full w-full object-contain group-hover:scale-105 transition duration-300"
-            />
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 addToCart(p);
               }}
-              className="absolute bottom-1.5 left-1.5 w-8 h-8 rounded-lg bg-white hover:bg-noonYellow text-noonDark shadow-md border border-gray-200 flex items-center justify-center transition"
+              className="absolute bottom-2 left-2 w-8 h-8 rounded-lg bg-white/95 hover:bg-noonYellow text-noonDark shadow-md border border-gray-200 flex items-center justify-center transition"
               title="أضف إلى العربة"
             >
               <Icons.Cart />
             </button>
           </div>
 
-          <div className="flex items-center gap-1 mt-2 mb-1">
+          <div className="flex items-center gap-1 mt-1 mb-1">
             <span className="bg-[#F3F4F8] text-noonDark text-[10px] font-extrabold px-1.5 py-0.5 rounded flex items-center gap-0.5">
               <span>{p.rating}</span>
               <span className="text-noonGreen"><Icons.Star /></span>
@@ -570,12 +561,10 @@ export default function NoonSaudiExactReplica() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* ================================================================= */}
-      {/* 1. الهيدر الأصفر العلوي المطابق للصورة المرفقة */}
+      {/* 1. الهيدر الأصفر العلوي المطابق للصورة */}
       {/* ================================================================= */}
       <header className="bg-noonYellow sticky top-0 z-40">
         <div className="max-w-[1440px] mx-auto px-3 sm:px-6 h-[58px] flex items-center justify-between gap-3 sm:gap-6">
-          
-          {/* اليمين: شعار نون + أكّد - الرياض */}
           <div className="flex items-center gap-3 sm:gap-5 shrink-0">
             <button
               onClick={() => {
@@ -598,7 +587,6 @@ export default function NoonSaudiExactReplica() {
             </button>
           </div>
 
-          {/* المنتصف: شريط البحث العريض مع أيقونة العدسة على اليمين كما في الصورة */}
           <div className="flex-1 max-w-[680px] relative">
             <input
               type="text"
@@ -615,7 +603,6 @@ export default function NoonSaudiExactReplica() {
             </span>
           </div>
 
-          {/* اليسار: English 文A | تسجيل الدخول | الطلبات | المفضلة | عربة التسوق */}
           <div className="hidden lg:flex items-center gap-3.5 text-[12px] font-bold text-[#111] shrink-0">
             <button className="hover:opacity-75 flex items-center gap-1.5">
               <span>English</span>
@@ -665,7 +652,6 @@ export default function NoonSaudiExactReplica() {
             </button>
           </div>
 
-          {/* زر العربة للموبايل */}
           <button
             onClick={() => setIsCartOpen(true)}
             className="lg:hidden bg-[#111] text-noonYellow px-2.5 py-1.5 rounded text-xs font-bold flex items-center gap-1 shrink-0"
@@ -700,7 +686,6 @@ export default function NoonSaudiExactReplica() {
             ))}
           </div>
 
-          {/* كبسولة نون one المطابقة للصورة */}
           <button
             onClick={() => setCategory("deals")}
             className="hidden xl:flex items-center gap-1.5 border border-[#FEEE00] bg-[#FFFDF0] hover:bg-noonYellow/20 px-3 py-1 rounded-full text-[11px] font-extrabold text-[#111] shrink-0 shadow-2xs"
@@ -714,7 +699,7 @@ export default function NoonSaudiExactReplica() {
       </nav>
 
       {/* ================================================================= */}
-      {/* 3. عرض صفحة المنتج الكاملة أو الهوم بيدج المطابق للصورة */}
+      {/* 3. عرض صفحة المنتج الكاملة أو الهوم بيدج بالصور الكاملة بدون تفريغ */}
       {/* ================================================================= */}
       {activeProduct ? (
         <main className="max-w-[1380px] w-full mx-auto px-3 sm:px-6 py-5 flex-1 space-y-6">
@@ -738,17 +723,17 @@ export default function NoonSaudiExactReplica() {
                   <button
                     key={i}
                     onClick={() => setActiveImage(imgUrl)}
-                    className={"w-16 h-16 rounded-lg border-2 p-1 bg-white " + (activeImage === imgUrl ? "border-noonBlue" : "border-gray-200")}
+                    className={"w-16 h-16 rounded-lg border-2 overflow-hidden " + (activeImage === imgUrl ? "border-noonBlue" : "border-gray-200")}
                   >
-                    <img src={imgUrl} className="w-full h-full object-contain" alt="thumb" />
+                    <img src={imgUrl} className="w-full h-full object-cover" alt="thumb" />
                   </button>
                 ))}
               </div>
-              <div className="flex-1 bg-white rounded-xl p-4 flex items-center justify-center relative min-h-[320px] border border-gray-100">
-                <span className="absolute top-3 right-3 bg-noonDark text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+              <div className="flex-1 rounded-xl overflow-hidden relative min-h-[320px] border border-gray-100">
+                <span className="absolute top-3 right-3 z-10 bg-noonDark text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
                   {activeProduct.badge}
                 </span>
-                <img src={activeImage || activeProduct.image} alt={activeProduct.title} className="max-h-[300px] w-full object-contain" />
+                <img src={activeImage || activeProduct.image} alt={activeProduct.title} className="h-full w-full object-cover" />
               </div>
             </div>
 
@@ -832,11 +817,11 @@ export default function NoonSaudiExactReplica() {
         <main className="max-w-[1440px] w-full mx-auto px-3 sm:px-6 py-4 flex-1 space-y-5">
           
           {/* =============================================================== */}
-          {/* البانرات الـ 4 العلوية بصور المنتجات المفرغة المطابقة للصورة */}
+          {/* البانرات الـ 4 العلوية بالصور الكاملة بدون أي تفريغ */}
           {/* =============================================================== */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
             
-            {/* 1. يمين الصورة: بانر صندوق عافية السماوي */}
+            {/* 1. يمين الصورة: بانر صندوق عافية السماوي بالصورة الكاملة */}
             <div
               onClick={() => setCategory("الصحة والتغذية")}
               className="cursor-pointer rounded-2xl overflow-hidden bg-gradient-to-b from-[#BCE6FF] via-[#DDF2FF] to-[#9CDCFF] p-5 flex flex-col justify-between relative h-[380px] sm:h-[410px] shadow-2xs group"
@@ -857,22 +842,21 @@ export default function NoonSaudiExactReplica() {
                 </div>
               </div>
 
-              {/* صورة منتجات العافية المفرغة */}
-              <div className="relative h-48 flex items-center justify-center my-auto">
+              <div className="relative h-48 w-full rounded-xl overflow-hidden my-auto shadow-md">
                 <img
-                  src="https://m.media-amazon.com/images/I/71wF7Y6Q+JL._AC_SL1500_.jpg"
+                  src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=85"
                   alt="صندوق عافية"
-                  className="max-h-44 object-contain mix-blend-multiply group-hover:scale-105 transition"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
 
-              <div className="flex items-center justify-between text-[9px] text-gray-700 z-10">
+              <div className="flex items-center justify-between text-[9px] text-gray-700 z-10 pt-1">
                 <Icons.ReplayBadge />
                 <span>*تطبق الشروط والأحكام</span>
               </div>
             </div>
 
-            {/* 2. البانر الثاني: EMAAR الكحلي الفاخر */}
+            {/* 2. البانر الثاني: EMAAR الكحلي الفاخر بالصورة الكاملة */}
             <div
               onClick={() => setCategory("المنزل")}
               className="cursor-pointer rounded-2xl overflow-hidden bg-[#061B33] text-white flex flex-col justify-between relative h-[380px] sm:h-[410px] shadow-2xs group"
@@ -889,14 +873,14 @@ export default function NoonSaudiExactReplica() {
               </div>
               <div className="h-52 w-full overflow-hidden relative">
                 <img
-                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80"
+                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=85"
                   alt="EMAAR"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
             </div>
 
-            {/* 3. البانر الثالث: عروض 11.11 بدعم من الماجد للعود + بنك البلاد */}
+            {/* 3. البانر الثالث: عروض 11.11 بدعم من الماجد للعود + بنك البلاد بالصورة الكاملة */}
             <div
               onClick={() => setCategory("الجمال والعطور")}
               className="cursor-pointer rounded-2xl overflow-hidden bg-gradient-to-b from-[#8A5CF6] via-[#C8A8FF] to-[#EFE4FF] p-4 flex flex-col justify-between relative h-[380px] sm:h-[410px] shadow-2xs group"
@@ -918,17 +902,11 @@ export default function NoonSaudiExactReplica() {
                 </div>
               </div>
 
-              {/* منتجات مفرغة (جوال + عطر + سماعة JBL) */}
-              <div className="my-1 flex items-center justify-center gap-2 h-32">
+              <div className="my-1.5 h-32 w-full rounded-xl overflow-hidden shadow-md">
                 <img
-                  src="https://m.media-amazon.com/images/I/61A8c5-yKVL._AC_SL1500_.jpg"
-                  alt="Perfume"
-                  className="h-24 object-contain mix-blend-multiply group-hover:scale-105 transition"
-                />
-                <img
-                  src="https://m.media-amazon.com/images/I/61d5F64UDpL._AC_SL1500_.jpg"
-                  alt="JBL"
-                  className="h-24 object-contain mix-blend-multiply group-hover:scale-105 transition"
+                  src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=85"
+                  alt="11.11 Deals"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
 
@@ -940,9 +918,8 @@ export default function NoonSaudiExactReplica() {
               </div>
             </div>
 
-            {/* 4. يسار الصورة: مقسوم إلى بطاقة نون الأول VISA بالأعلى + بانر أقل أسعار السنة بالأسفل */}
+            {/* 4. يسار الصورة: بطاقة نون الأول VISA بالأعلى + بانر أقل أسعار السنة بالأسفل بالصورة الكاملة */}
             <div className="flex flex-col gap-3.5 h-[380px] sm:h-[410px]">
-              {/* البطاقة العلوية الصفراء: نون | الأول SAB */}
               <div
                 onClick={() => setCategory("deals")}
                 className="cursor-pointer h-[155px] bg-gradient-to-l from-[#FFF04D] to-noonYellow rounded-2xl p-4 flex items-center justify-between gap-2 shadow-2xs relative overflow-hidden group"
@@ -966,7 +943,6 @@ export default function NoonSaudiExactReplica() {
                   <span className="text-[8px] text-gray-700 block">*تطبق الشروط والأحكام</span>
                 </div>
 
-                {/* بطاقة فيزا نون الصفراء */}
                 <div className="w-32 h-22 bg-noonYellow rounded-xl border border-yellow-500 shadow-md p-2.5 flex flex-col justify-between shrink-0 group-hover:scale-105 transition">
                   <div className="flex justify-between items-center text-[9px] font-black text-[#111]">
                     <span className="text-red-600">⟨⟩ SAB</span>
@@ -976,7 +952,6 @@ export default function NoonSaudiExactReplica() {
                 </div>
               </div>
 
-              {/* البطاقة السفلية البنفسجية: أقل أسعار السنة مع صورة التوستر والمج الحراري المفرغة */}
               <div
                 onClick={() => setCategory("المنزل")}
                 className="cursor-pointer flex-1 bg-gradient-to-br from-[#8C52FF] via-[#A87BFF] to-[#D4B8FF] rounded-2xl p-4 text-white flex flex-col justify-between shadow-2xs relative overflow-hidden group"
@@ -992,16 +967,11 @@ export default function NoonSaudiExactReplica() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center gap-4 my-auto z-10">
+                <div className="h-28 w-full rounded-xl overflow-hidden mt-2 z-10 shadow-md">
                   <img
-                    src="https://m.media-amazon.com/images/I/51rA8-t2p2L._AC_SL1000_.jpg"
-                    alt="SMEG Toaster"
-                    className="h-24 object-contain mix-blend-multiply rounded-lg bg-white/80 p-1 group-hover:scale-105 transition"
-                  />
-                  <img
-                    src="https://m.media-amazon.com/images/I/51wX7O6xL6L._AC_SL1500_.jpg"
-                    alt="Stanley"
-                    className="h-24 object-contain mix-blend-multiply rounded-lg bg-white/80 p-1 group-hover:scale-105 transition"
+                    src="https://images.unsplash.com/photo-1584990347449-a2d4c2c044c9?auto=format&fit=crop&w=600&q=85"
+                    alt="أقل أسعار السنة"
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />
                 </div>
               </div>
@@ -1009,7 +979,7 @@ export default function NoonSaudiExactReplica() {
           </section>
 
           {/* =============================================================== */}
-          {/* 4. شريط الكروت الـ 12 المربعة ذات الإطار الأصفر والشريط البني السفلي */}
+          {/* 4. شريط الكروت الـ 12 المربعة السفلية بالصور الكاملة بدون تفريغ */}
           {/* =============================================================== */}
           <section className="bg-[#FFF9EB] p-3.5 sm:p-4 rounded-2xl border border-[#F5E6C8] relative">
             <button
@@ -1032,10 +1002,10 @@ export default function NoonSaudiExactReplica() {
                   }}
                   className="cursor-pointer w-[98px] sm:w-[108px] shrink-0 flex flex-col items-center group"
                 >
-                  {/* المربع الأصفر بصور المنتجات المفرغة */}
-                  <div className="w-full h-24 sm:h-26 rounded-2xl bg-gradient-to-b from-[#FFF6B3] to-[#FEEE00] border-2 border-[#FEEE00] overflow-hidden relative flex items-center justify-center p-2 shadow-2xs group-hover:scale-105 transition">
+                  {/* المربع الأصفر بالصورة الكاملة (object-cover بدون أي تفريغ) */}
+                  <div className="w-full h-24 sm:h-26 rounded-2xl bg-noonYellow border-2 border-[#FEEE00] overflow-hidden relative flex items-center justify-center shadow-2xs group-hover:scale-105 transition">
                     {card.is1111 ? (
-                      <div className="text-center">
+                      <div className="text-center p-1">
                         <span className="bg-red-600 text-white text-[9px] font-black px-2 py-0.2 rounded-full block mb-0.5">
                           عرض
                         </span>
@@ -1050,12 +1020,12 @@ export default function NoonSaudiExactReplica() {
                       <img
                         src={card.img}
                         alt={card.title}
-                        className="w-full h-full object-contain mix-blend-multiply"
+                        className="w-full h-full object-cover"
                       />
                     )}
                   </div>
 
-                  {/* الكبسولة العنابية/البنية الداكنة تحت كل مربع كما في الصورة تماماً */}
+                  {/* الكبسولة العنابية/البنية الداكنة تحت كل مربع */}
                   <div className="-mt-2.5 z-10 bg-noonMaroon text-white text-[9px] sm:text-[10px] font-extrabold px-2.5 py-0.5 rounded-full whitespace-nowrap shadow flex items-center gap-0.5">
                     <span>{card.badge}</span>
                     {(card.badge.includes("تبدأ") || card.badge.includes("150") || card.badge.includes("250")) && (
@@ -1079,7 +1049,7 @@ export default function NoonSaudiExactReplica() {
           </section>
 
           {/* =============================================================== */}
-          {/* 5. شبكة المنتجات بصور الاستوديو البيضاء النظيفة */}
+          {/* 5. شبكة المنتجات بالصور الأصلية الكاملة بدون تفريغ */}
           {/* =============================================================== */}
           <section className="space-y-3 pt-2">
             <div className="bg-[#F7F7FA] p-3.5 sm:p-4 rounded-xl border border-gray-200 flex flex-wrap items-center justify-between gap-2">
@@ -1234,7 +1204,7 @@ export default function NoonSaudiExactReplica() {
               ) : (
                 cart.map((i) => (
                   <div key={i.id} className="flex items-center gap-3 border p-2.5 rounded-xl">
-                    <img src={i.image} className="w-14 h-14 object-contain rounded-lg bg-white" />
+                    <img src={i.image} className="w-14 h-14 object-cover rounded-lg" />
                     <div className="flex-1 text-xs">
                       <h4 className="font-bold line-clamp-1">{i.title}</h4>
                       <div className="font-black text-noonBlue mt-0.5">{i.price.toLocaleString()} ر.س</div>
@@ -1315,7 +1285,7 @@ export default function NoonSaudiExactReplica() {
             />
             <button
               onClick={() => {
-                localStorage.setItem("noon_user_v6", userName);
+                localStorage.setItem("noon_user_v7", userName);
                 setIsAuthModalOpen(false);
               }}
               className="w-full bg-noonDark text-noonYellow font-black py-2.5 rounded-lg text-sm"
@@ -1329,10 +1299,10 @@ export default function NoonSaudiExactReplica() {
   );
 }`,
 
-  // لوحة تحكم الإدارة المستقلة على الرابط /admin مع استيراد 100 منتج استوديو نظيف في المرة الواحدة
+  // لوحة تحكم الإدارة المستقلة على الرابط /admin مع استيراد 100 منتج بالصور الكاملة بدون تفريغ
   'src/app/admin/page.jsx': `"use client";
 import { useState, useEffect } from "react";
-import { initialProducts, initialOrders, generate100StudioBatch } from "../../lib/storeData";
+import { initialProducts, initialOrders, generate100FullBatch } from "../../lib/storeData";
 
 export default function AdminPortal() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -1348,8 +1318,8 @@ export default function AdminPortal() {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    const savedProds = localStorage.getItem("noon_prods_v6");
-    const savedOrders = localStorage.getItem("noon_orders_v6");
+    const savedProds = localStorage.getItem("noon_prods_v7");
+    const savedOrders = localStorage.getItem("noon_orders_v7");
     if (savedProds) setProducts(JSON.parse(savedProds));
     if (savedOrders) setOrders([...JSON.parse(savedOrders), ...initialOrders]);
   }, []);
@@ -1373,24 +1343,24 @@ export default function AdminPortal() {
     const newProd = await res.json();
     const updated = [newProd, ...products];
     setProducts(updated);
-    localStorage.setItem("noon_prods_v6", JSON.stringify(updated));
+    localStorage.setItem("noon_prods_v7", JSON.stringify(updated));
     setTitle(""); setPrice(""); setOldPrice(""); setImage("");
     alert("تم نشر المنتج في متجر نون بنجاح!");
   }
 
-  function handleImport100Studio() {
-    const new100 = generate100StudioBatch(batchCounter);
+  function handleImport100Full() {
+    const new100 = generate100FullBatch(batchCounter);
     setBatchCounter((prev) => prev + 1);
     const updated = [...new100, ...products];
     setProducts(updated);
-    localStorage.setItem("noon_prods_v6", JSON.stringify(updated));
-    alert("تم استيراد 100 منتج استوديو بصور مفرغة نظيفة بنجاح! إجمالي المنتجات الآن: " + updated.length + " منتج.");
+    localStorage.setItem("noon_prods_v7", JSON.stringify(updated));
+    alert("تم استيراد 100 منتج بالصور الأصلية الكاملة بنجاح! إجمالي المنتجات الآن: " + updated.length + " منتج.");
   }
 
   function deleteProduct(id) {
     const updated = products.filter((p) => p.id !== id);
     setProducts(updated);
-    localStorage.setItem("noon_prods_v6", JSON.stringify(updated));
+    localStorage.setItem("noon_prods_v7", JSON.stringify(updated));
   }
 
   if (!isAuthenticated) {
@@ -1417,10 +1387,10 @@ export default function AdminPortal() {
         </div>
         <div className="flex flex-wrap gap-3">
           <button
-            onClick={handleImport100Studio}
+            onClick={handleImport100Full}
             className="bg-noonYellow hover:bg-yellow-300 text-noonDark font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg transition"
           >
-            + استيراد 100 منتج استوديو دفعة واحدة
+            + استيراد 100 منتج بالصور الكاملة دفعة واحدة
           </button>
           <button onClick={() => setIsAuthenticated(false)} className="bg-red-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm">
             تسجيل خروج
@@ -1462,7 +1432,7 @@ export default function AdminPortal() {
           <input required type="number" value={oldPrice} onChange={(e) => setOldPrice(e.target.value)} placeholder="السعر قبل الخصم" className="border p-2 rounded" />
         </div>
         <div className="flex flex-col sm:flex-row gap-3">
-          <input required type="url" value={image} onChange={(e) => setImage(e.target.value)} placeholder="رابط صورة المنتج (https://...)" className="border p-2 rounded flex-1" />
+          <input required type="url" value={image} onChange={(e) => setImage(e.target.value)} placeholder="رابط صورة المنتج الكاملة (https://...)" className="border p-2 rounded flex-1" />
           <button type="submit" className="bg-noonBlue text-white font-black px-6 py-2.5 rounded-lg">نشر في المتجر</button>
         </div>
       </form>
@@ -1476,7 +1446,7 @@ export default function AdminPortal() {
           <tbody className="divide-y">
             {products.slice(0, 120).map((p) => (
               <tr key={p.id}>
-                <td className="p-3 font-bold flex items-center gap-2"><img src={p.image} className="w-10 h-10 object-contain rounded bg-white border p-0.5" /> {p.title}</td>
+                <td className="p-3 font-bold flex items-center gap-2"><img src={p.image} className="w-10 h-10 object-cover rounded border" /> {p.title}</td>
                 <td className="p-3">{p.category}</td>
                 <td className="p-3 font-black">{Number(p.price).toLocaleString()} ر.س</td>
                 <td className="p-3"><button onClick={() => deleteProduct(p.id)} className="text-red-600 font-bold hover:underline">حذف</button></td>
@@ -1495,4 +1465,4 @@ for (const [filePath, content] of Object.entries(files)) {
   fs.mkdirSync(path.dirname(fullPath), { recursive: true });
   fs.writeFileSync(fullPath, content, 'utf8');
 }
-console.log("✅ Studio Cutout Images + Exact Noon KSA DOM Replica Completed!");
+console.log("✅ Full Unblended Original Images Replica Completed!");
