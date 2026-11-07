@@ -144,7 +144,7 @@ const coreCommercialSeeds = [
 
 // توليد 100 منتج فريد تماماً بمواصفات وسعات وموديلات مستقلة
 export function generate100UniqueCommercialProducts(batchNum = 1) {
-  conststorageSpecs = [
+  const storageSpecs = [
     "النسخة الرسمية للسعودية - ضمان سنتين",
     "إصدار خاص بذاكرة مضاعفة وملحقات أصلية",
     "الجيل المطور 2026 بتقنية التوفير الذكي",
